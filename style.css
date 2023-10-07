@@ -1,0 +1,75 @@
+
+.ventanaPost{
+    height: 75vh;
+    width: 43vw;
+    padding: 0;
+}
+
+.contenedorVent{
+    display: grid;
+    grid-template-rows: 22vh 41vh 12vh;
+}
+.sectionPost{
+    border: 1px solid red;
+}
+ /*Contenido Header*/
+.headerPost{
+    display: grid;
+    grid-template-rows: 7vh 7vh 8vh;
+
+}
+
+.textCearP{
+    display: grid;
+    grid-template-columns: 6.5rem 29.7rem 1.2rem;
+    border-bottom: 1px solid black;
+    margin: 0 15px 0 15px ;
+}
+
+.itemsHeaderP{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cerrarX{
+    grid-area: 1/3/2/4 ;
+}
+
+ /*Contenido header dos*/
+
+ .contenedorPadreInput{
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    margin-left: 15px;
+ }
+
+ .contenedorInpCo{
+    display: grid;
+    grid-template-columns: 2.3rem 13.8rem 1.4rem;
+    height: 70%;
+    width: 46%;
+    background-color: beige;
+    border-radius: 10px;
+
+ }
+
+ .imgUser{
+    margin-top: 6px;
+    margin-left: 6px;
+ }
+ 
+
+ .escogerComunidad{
+    
+    grid-column: 2/3;
+    outline: none;
+    border: 0;
+    background-color: beige;
+ }
+
+ .flecha{
+    cursor: pointer;
+ }
+
