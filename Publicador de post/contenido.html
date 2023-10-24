@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Document</title>
+</head>
+<body>
+    <dialog class="ventanaPost">
+        <section class="contenedorVent">
+            <article class="sectionPost headerPost">
+                <section class="textCearP">
+                    <span class="itemsHeaderP textHeap">CREAR POST</span>
+                    <span class="itemsHeaderP cerrarX">X</Span>
+                </section>
+                <section class="contenedorPadreInput">
+                    <article class="contenedorInpCo">
+                        <img class="imgUser" src="calco.png" alt="" style="width: 25px; height: 25px;">
+                        <input class="escogerComunidad" placeholder="Escoge una comunidad" spellcheck="false">
+                        <i class="fa-solid fa-arrow-down flecha" style="color: #ffffff; display: flex; align-content: center; flex-wrap: wrap;" ></i>
+                    </article>
+                </section>
+                <section class="contenedorPadreBtns">
+                    <article class="contenedorChildBtn textPost">
+                        <button class="btnPost">
+                            POST
+                        </button>
+                    </article>
+                    <article class="contenedorChildBtn imgPost">
+                        <button class="btnPost"><span class="textBtn">IMG</span></button>
+                    </article>
+                    <article class="contenedorChildBtn urlPost">
+                        <button class="btnPost"><span class="textBtn">URL</span></button>
+                    </article>
+                </section>
+            </article>
+            <article class="sectionPost mainPost">
+                <section class="contenedorInputLabel">
+                    <article class="contenedorInputTitle">
+                        <textarea class="inputTitle" maxlength="300" placeholder="Title" rows="1"></textarea>
+                        <p class="numInput">0 / 300</p>
+                    </article>
+                </section>
+                <section class="contenedorBtnsText">
+                    <article class="contenedorBtnCambio">
+                        <section class="btnsCambios">
+                            <span>
+                                <button role="button" class="btnsCambiar btnFondoColor">
+                                    <i class="fa-solid fa-bold icon"></i>
+                                    
+                                </button>
+                            </span>
+                            <span>
+                                <button role="button" class="btnsCambiar btnFondoColor">
+                                    <i class="fa-solid fa-italic icon"></i>
+                                    
+                                </button>
+                            </span>
+                            <span>
+                                <button role="button" class="btnsCambiar btnFondoColor">
+                                    <i class="fa-solid fa-link icon" ></i>
+                                    
+                                </button>
+                            </span>
+                            <span>
+                                <button role="button" class="btnsCambiar btnFondoColor">
+                                    <i class="fa-solid fa-strikethrough icon"></i>
+                                    
+                                </button>
+                            </span>
+                            <span>
+                                <button role="button" class="btnsCambiar btnFondoColor">
+                                    <i class="fa-solid fa-superscript icon"></i>
+                                    
+                                </button>
+                            </span>
+                            <span>
+                                <button role="button" class="btnsCambiar btnFondoColor">
+                                    <i class="fa-solid fa-t icon"></i>
+                                    
+                                </button>
+                            </span>
+                            <span class="linea">
+                                |
+                            </span>
+                            <span>
+                                <button role="button" class="btnsCambiar btnFondoColor">
+                                    <i class="fa-solid fa-list icon"></i>
+                                    
+                                </button>
+                            </span>
+                            <span>
+                                <button role="button" class="btnsCambiar btnFondoColor">
+                                    <i class="fa-solid fa-list-ol icon"></i>
+                                    
+                                </button>
+                            </span>
+                            <p class="textModify">Modify your post</p>
+                        </section>
+                    </article>
+                    <article class="contenedorTextTarea">
+                        
+                        <textarea class="textTareaInput" placeholder="Text(opcional)" cols="30" rows="10"></textarea>
+                        
+                    </article>
+
+                </section>
+            </article>
+            <article class="sectionPost footerPost">
+            </article>
+
+        </section>
+
+    </dialog>
+    <script src="script.js"></script>
+</body>
+</html>

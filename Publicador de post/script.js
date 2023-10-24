@@ -1,7 +1,7 @@
 let botones=document.querySelectorAll(".btnPost")
 let inputTextTarea=document.querySelector(".inputTitle")
 let numInput=document.querySelector(".numInput")
-
+let btnToggle=document.querySelectorAll(".btnsCambiar")
 function activar() {
     let updateButton = document.getElementById("updateDetails");
     let cancelButton = document.getElementById("cancel");
@@ -45,16 +45,38 @@ function resetbtn() {
 /*funciones input TextTarea*/
 
 
-function contadorLetras(){
-    let contador=0
+function countChars(){
 
-    inputTextTarea.addEventListener("keydown", function(e){
+    inputTextTarea.addEventListener("keyup", (e) =>{
 
-        if(contador!=300){
-            numInput.innerHTML=numInput.innerHTML.replace(contador,contador+1)
-            contador=contador+1
-        }
+
+        let inde=numInput.innerHTML = e.target.value.length +' / 300';
+
     })
-}
-contadorLetras()
 
+}
+countChars()
+
+
+function cambiarColorBtn(){
+
+    let icon= document.querySelectorAll(".fa-solid")
+
+
+    for (let i = 0 ; i < btnToggle.length ; i++){
+
+
+        btnToggle[i].addEventListener("click", function(){
+
+
+   
+            icon[i+1].classList.toggle("btnsCambiarColor")
+
+
+        })      
+
+    }
+
+}
+
+cambiarColorBtn()
