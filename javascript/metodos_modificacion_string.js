@@ -16,7 +16,7 @@ console.log(nombre.search("min"))//Este metodo se utiliza para expreiones regula
 console.log(nombre.slice(3,14)) //Este metodo trae los valores que esten entre el rango que se la como parametro
 console.log(nombre.split(" ")) // separa el string y lo convierte en una lista de acuerdo con el valor que le indiquemos por parametro
 console.log(nombre.startsWith("h"))// devuleve un booleano afirmando o no si el str comienza con el parametro indicado
-console.log(nombre.substr(3,6))// Devuelve el string desde la posicion dada en el primer parametro y con la longitud dada en el segundo parametro
+console.log(nombre.substr(3,6), "linea tal")// Devuelve el string desde la posicion dada en el primer parametro y con la longitud dada en el segundo parametro
 console.log(nombre.substring(3,14))// Es muy parecido al slice
 console.log(texto2.toLowerCase())// Transforma todo a minusculas
 console.log(texto.toUpperCase())// Transforma todo a mayusculas
