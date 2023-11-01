@@ -13,7 +13,7 @@ console.log(texto.repeat(3))//Repite la cantidad de veces que le mandemos por pa
 let nombre = texto.replace("dadsada", "zmin dsadasd dsadas")// remplaza una cadena de caracteres por lo que se le inque en el 2 parametro tambien puede cambiar expresiones regulares
 console.log(nombre.replace("a","0"))
 console.log(nombre.search("min"))//Este metodo se utiliza para expreiones regulares mas que todo
-console.log(nombre.slice(3,14)) //Este metodo trae los valores que esten entre el rango que se la como parametro
+console.log(nombre.slice(3,14)) //Este metodo trae los valores que esten entre el rango que se la como parametro, si le pasas solo un parametro te arroja lo que haya desde ese indece hasta el final
 console.log(nombre.split(" ")) // separa el string y lo convierte en una lista de acuerdo con el valor que le indiquemos por parametro
 console.log(nombre.startsWith("h"))// devuleve un booleano afirmando o no si el str comienza con el parametro indicado
 console.log(nombre.substr(3,6), "linea tal")// Devuelve el string desde la posicion dada en el primer parametro y con la longitud dada en el segundo parametro

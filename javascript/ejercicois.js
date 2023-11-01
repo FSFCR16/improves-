@@ -75,26 +75,75 @@ let objeto= {
 }
 
 function DNAStrand(dna){
-    let cadenaNew=""
+    let array = dna.split("")
     for (let i = 0; i < dna.length; i++){
-        let letra=dna.charAt([i])
+        let letra=dna[i]
         switch(letra){
-            case "A": let aV=dna.replace(dna, "T");
-                cadenaNew+=aV[i]
+            case "A": array[i]="T";
                 break;
-            case "T": let tV=dna.replace(dna, "A");
-                cadenaNew+=tV[i]
+            case "T": array[i]="A";
                 break;
-            case "C": let cV=dna.replace(dna, "G");
-                cadenaNew+=cV[i]
+            case "C": array[i]="G";
                 break;
-            case "G": let gV=dna.replace(dna, "C");
-                cadenaNew+=gV[i]
+            case "G": array[i]="C";
                 break;
             default:
                 console.log("Codigo de adn escrito incorrectamente")
+
         }
     }
-    console.log(cadenaNew)
+    let arrayJoin=array.join("")
+    console.log(arrayJoin)
 }
-DNAStrand("AAAA")
+
+
+var pairs = {'A':'T','T':'A','C':'G','G':'C'};
+function DNAStrand(dna){
+    let split=dna.split('')
+    let añadirA=split.map(function(v){ 
+        return pairs[v]
+    })
+    let resultadoAAA=añadirA.join("")
+    console.log(resultadoAAA)
+  }
+//Codigo original de el de arriba
+var pairs = {'A':'T','T':'A','C':'G','G':'C'};
+
+function DNAStrand(dna){
+  return dna.split('').map(function(v){ return pairs[v] }).join('');
+}
+
+
+function solution(number){
+    let resultadoSuma=0
+    for (let i = 0 ; i < number ; i++){
+
+        if(i % 3 == 0 || i % 5 == 0 ){
+
+            resultadoSuma += i
+        }
+    }
+    return resultadoSuma
+}
+
+function pigIt(str){
+    let array=str.split(" ")
+    let arrayRes=[]
+    const patron = /[!@#$%^&*()_+{}\[\]:;<>,.?~\\|/]/;
+    for ( let i =0 ; i < array.length; i++){
+        if (patron.test(array[i])){
+            arrayRes.push(array[i])
+        }else{
+            array[i] = array[i].substr(1,array[i].length) + array[i][0]+"ay"
+            arrayRes.push(array[i])
+        }
+  }
+  console.log(arrayRes.join(" "))
+}
+
+function pigIt(str){
+    return str.replace(/(\w)(\w*)(\s|$)/g, "\$2\$1ay\$3")
+  }
+
+let gans= "hola"
+console.log(gans.slice(1,2))
