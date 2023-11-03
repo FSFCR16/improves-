@@ -141,9 +141,60 @@ function pigIt(str){
   console.log(arrayRes.join(" "))
 }
 
-function pigIt(str){
-    return str.replace(/(\w)(\w*)(\s|$)/g, "\$2\$1ay\$3")
+
+function expandedForm(num) {
+    arrNum=num.toString().split("");
+    let arrExtendedForm=[]
+    let nummm=1
+    for (let i=arrNum.length - 1; i >= 0; i--){
+        if (arrNum[i]=="0"){
+            nummm*=10
+        }else{
+            let resMul=parseInt(arrNum[i])*nummm
+            nummm*=10
+            arrExtendedForm.unshift(resMul.toString())
+        }
+    }
+    return arrExtendedForm.join(" + ")
   }
 
-let gans= "hola"
-console.log(gans.slice(1,2))
+expandedForm(12)
+
+//solucion de forma simplificado
+/*const expandedForm = n => n.toString()
+                            .split("")
+                            .reverse()
+                            .map( (a, i) => a * Math.pow(10, i))
+                            .filter(a => a > 0)
+                            .reverse()
+                            .join(" + ");
+
+/////*/
+function solution (roman) {
+
+    numeroRoman={"I": 1, "V":5, "X": 10, "L": 50, "C": 100, "D": 500, "M": 1000}
+    let valor=0
+    for (let i  = 0, j=1; i < roman.length  ; i++, j++){
+        if ( j == roman.length){
+            j-=1
+        }
+        if (numeroRoman[roman[i]] >= numeroRoman[roman[j]]) {
+
+            valor+=numeroRoman[roman[i]]
+
+
+        }else{
+            valor=valor-=numeroRoman[roman[i]]
+        }
+
+    }
+    return valor
+
+}
+
+
+
+function solution(roman) {
+    var value = {'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100, 'D': 500, 'M': 1000};
+    return roman.split('').map( d => value[d] ).reduce( (s,v,i,o) => s + ( (o[i+1] > v) ? -v : v ), 0 );
+  }
