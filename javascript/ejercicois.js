@@ -198,3 +198,33 @@ function solution(roman) {
     var value = {'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100, 'D': 500, 'M': 1000};
     return roman.split('').map( d => value[d] ).reduce( (s,v,i,o) => s + ( (o[i+1] > v) ? -v : v ), 0 );
   }
+
+
+function solution(string) {
+
+    let array = string.split("")
+
+    for (let i = 0; i < array.length; i++ ){
+        if(array[i]== array[i].toUpperCase()){
+            i+=1
+            array.splice(i-1, 0, "-")
+            
+        }
+    }
+    console.log(array.join("").split("-").join(" "))
+
+
+}
+
+
+function solution1(string) {
+    string = string.split('').map(function (el) {
+      if (el === el.toUpperCase()) {
+        el = ' ' + el
+      }
+      return el
+    })
+    console.log(string.join(''))
+  }
+
+  solution1("caemlCaseGtesting")
