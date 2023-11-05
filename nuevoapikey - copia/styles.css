@@ -299,11 +299,7 @@ option:hover{
   justify-self: center;
 }
 
-.ciudadInputSelect:hover {
-  background-color: #780803;
-  box-shadow: 0 0 20px #6fc5ff50;
-  transform: scale(1.03);
-}
+
 
 .ciudadInputSelect:active {
   background-color: #000000;

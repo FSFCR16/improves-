@@ -105,10 +105,13 @@ let ciudadMomentoB=document.querySelector(".ciudadMomentoB")
 /*----------------------------------------------------------*/
 
 function oprimirFlecha(){
+
   flechaRastreo.addEventListener("click", (e)=> {
 
     selecionCiudad.classList.toggle("verCiudad")
     ciudadMomentoPuntoA.classList.remove("verCiudadDos")
+    ciudadMomentoPuntoB.classList.remove("verCiudadDos")
+    oprimirCiudad()[0].classList.remove("verCiudadDos")
 
   })
   ciudadEscogida.addEventListener("click", (e) => {
@@ -117,7 +120,10 @@ function oprimirFlecha(){
     let ciudad=ciudadEscogida.value.split(",")
     ciudadMomentoA.innerHTML= ciudad[0]
     ciudadMomentoB.innerHTML= ciudad[0]
+    oprimirCiudad()[1].innerHTML=ciudad[0]
+
     selecionCiudad.classList.remove("verCiudad")
+
 
   }) 
   ciudadInputSelect.addEventListener("click", (e)=> {
@@ -125,7 +131,8 @@ function oprimirFlecha(){
     ciudadMomentoPuntoA.classList.toggle("verCiudadDos")
     selecionCiudad.classList.remove("verCiudad")
     ciudadMomentoPuntoB.classList.remove("verCiudadDos")
-    ciudadMomentoPuntoC.classList.remove("verCiudadDos")
+    oprimirCiudad()[0].classList.remove("verCiudadDos")
+
 
   })
   ciudadMomentoPuntoA.addEventListener("click", (e)=>{
@@ -138,6 +145,7 @@ function oprimirFlecha(){
 
     ciudadMomentoPuntoB.classList.toggle("verCiudadDos")
     selecionCiudad.classList.remove("verCiudad")
+    oprimirCiudad()[0].classList.remove("verCiudadDos")
 
 
   })
@@ -149,7 +157,7 @@ function oprimirFlecha(){
   })
 
 }
-oprimirFlecha()
+let oprimiCiudades=oprimirFlecha()
 
 let inputInfoB=document.querySelector(".direccionInB")
 let inputInfoA=document.querySelector(".direccionInA")
@@ -190,114 +198,107 @@ let articleNuevopuntoC=document.createElement("article")
 let barraLateral=document.querySelector(".barralateral")
 let contenedorPuntos=document.querySelector(".contenedorPuntos")
 
+function oprimirCiudad(){
 
+  /*adicion de clases*/
+  contenedorPuntos.classList.add("adicionGridPuntos")
+  barraLateral.classList.add("adicionGridPrincipal")
+
+  /*contenedor intercambio*/
+
+  contenedorPrincipalPar.after(articleNuevo)
+  articleNuevo.innerHTML=`<article class="contenedorIntercambio interCambioDos">
+  <i class="fa-solid fa-arrow-down-up-across-line" style="color: #780803;"></i>
+</article>`
+
+
+
+  /*contenedor puntoC*/
+  articleNuevo.after(articleNuevopuntoC)
+  articleNuevopuntoC.classList.add("contenedorPuntoA")
+  articleNuevopuntoC.classList.add("contenedorPuntoNuevo")
+  articleNuevopuntoC.innerHTML=`<section class="contedorTextA">
+                                  <p class="textoA">Punto C</P>
+                                </section>
+                                <section class="contedorDireccionYNum">
+                                  <article class="dirrecionRastreo">
+                                    <section class="iconoUbicacion">
+                                      <i class="fa-solid fa-location-dot" style="color: #030303;  opacity: 0.3"></i>
+                                    </section>
+                                    <section  class="inputDireccion">
+                                      <input type="text" class="direccionIn direccionInC" style="z-index:0;" placeholder="Escribe aqui tu direccion. Ej: Calle 98 # 3-6">
+                                    </section>
+                                    <section  class="ciudadInputSelect ciudadInputSelectC">
+                                      <p class="ciudadMomento ciudadMomentoC" style="font-family: Regular;">Chia</p>
+                                      <i class="fa-solid fa-angle-down arrowCiudad" style="color: #ffffff;"></i>
+                                    </section>
+                                    <article class="seleccCiudad seleccCiudadPuntoC ">
+                                      <select name="SeleccionCiudades" id="seleccionCiudadC" size="6">
+                                        <option value="Boogota" class="options">Boogota</option>
+                                        <option value="Medellin" class="options">Medellin</option>
+                                        <option value="Barranquilla" class="options">Barranquilla</option>
+                                        <option value="Cali" class="options">Cali</option>
+                                        <option value="Cartagena" class="options">Cartagena</option>
+                                        <option value="Ibague" class="options">Ibague</option>
+                                        <option value="Chia" class="options">Chia</option>
+                                        <option value="Funza" class="options">Funza</option>
+                                         <option value="Mosquera" class="options">Mosquera</option>
+                                      </select>
+                                    </article>
+                                  </article>
+                                </section>`
+  /*--------------------------------------------------------------------------*/
+  let ciudadInputSelectC=document.querySelector(".ciudadInputSelectC")
+  let ciudadEscogidaC=document.querySelector("#seleccionCiudadC")
+  let ciudadMomentoPuntoC=document.querySelector(".seleccCiudadPuntoC")
+  let ciudadMomentoC=document.querySelector(".ciudadMomentoC")
+  let inputInfoC=document.querySelector(".direccionInC")
+  let botonDos= document.querySelector(".interCambioDos")
+  
+
+  ciudadInputSelectC.addEventListener("click", ()=> {
+
+    ciudadMomentoPuntoC.classList.toggle("verCiudadDos")
+    selecionCiudad.classList.remove("verCiudad")
+
+  })
+  ciudadMomentoPuntoC.addEventListener("click", (e)=>{
+
+    ciudadMomentoC.innerHTML= ciudadEscogidaC.value
+    ciudadMomentoPuntoC.classList.remove("verCiudadDos")
+
+  })
+  botonDos.addEventListener("click", (e) =>{
+    let valueDos=""
+    let valueTres=""
+
+    valueDos+=inputInfoB.value
+    valueTres+=inputInfoC.value
+    console.log(valueDos)
+    console.log(valueTres)
+
+    inputInfoB.value=valueTres
+    inputInfoC.value=valueDos
+
+    /*Cambio de cuidad*/
+
+    let ciudadUno=""
+    let ciudadDos=""
+
+    ciudadUno+=ciudadMomentoB.innerHTML
+    ciudadDos+=ciudadMomentoC.innerHTML
+
+    ciudadMomentoB.innerHTML=ciudadDos
+    ciudadMomentoC.innerHTML=ciudadUno
+  
+  })
+  
+  return [ciudadMomentoPuntoC, ciudadMomentoC]
+
+}
 
 function puntos(){
 
-  contenedorParadas.addEventListener("click", (e)=>{
-
-    /*adicion de clases*/
-    contenedorPuntos.classList.add("adicionGridPuntos")
-    barraLateral.classList.add("adicionGridPrincipal")
-
-    /*contenedor intercambio*/
-
-    contenedorPrincipalPar.after(articleNuevo)
-    articleNuevo.innerHTML=`<article class="contenedorIntercambio interCambioDos">
-    <i class="fa-solid fa-arrow-down-up-across-line" style="color: #780803;"></i>
-  </article>`
-
-
-
-    /*contenedor puntoC*/
-    articleNuevo.after(articleNuevopuntoC)
-    articleNuevopuntoC.classList.add("contenedorPuntoA")
-    articleNuevopuntoC.classList.add("contenedorPuntoNuevo")
-    articleNuevopuntoC.innerHTML=`<section class="contedorTextA">
-                                    <p class="textoA">Punto C</P>
-                                  </section>
-                                  <section class="contedorDireccionYNum">
-                                    <article class="dirrecionRastreo">
-                                      <section class="iconoUbicacion">
-                                        <i class="fa-solid fa-location-dot" style="color: #030303;  opacity: 0.3"></i>
-                                      </section>
-                                      <section  class="inputDireccion">
-                                        <input type="text" class="direccionIn direccionInC" style="z-index:0;" placeholder="Escribe aqui tu direccion. Ej: Calle 98 # 3-6">
-                                      </section>
-                                      <section  class="ciudadInputSelect ciudadInputSelectC">
-                                        <p class="ciudadMomento ciudadMomentoC" style="font-family: Regular;">Chia</p>
-                                        <i class="fa-solid fa-angle-down arrowCiudad" style="color: #ffffff;"></i>
-                                      </section>
-                                      <article class="seleccCiudad seleccCiudadPuntoC ">
-                                        <select name="SeleccionCiudades" id="seleccionCiudadC" size="6">
-                                          <option value="Boogota" class="options">Boogota</option>
-                                          <option value="Medellin" class="options">Medellin</option>
-                                          <option value="Barranquilla" class="options">Barranquilla</option>
-                                          <option value="Cali" class="options">Cali</option>
-                                          <option value="Cartagena" class="options">Cartagena</option>
-                                          <option value="Ibague" class="options">Ibague</option>
-                                          <option value="Chia" class="options">Chia</option>
-                                          <option value="Funza" class="options">Funza</option>
-                                           <option value="Mosquera" class="options">Mosquera</option>
-                                        </select>
-                                      </article>
-                                    </article>
-                                  </section>`
-    /*--------------------------------------------------------------------------*/
-    let ciudadInputSelectC=document.querySelector(".ciudadInputSelectC")
-    let ciudadEscogidaC=document.querySelector("#seleccionCiudadC")
-    let ciudadMomentoPuntoC=document.querySelector(".seleccCiudadPuntoC")
-    let ciudadMomentoC=document.querySelector(".ciudadMomentoC")
-    let inputInfoC=document.querySelector(".direccionInC")
-    let botonDos= document.querySelector(".interCambioDos")
-
-    ciudadInputSelectC.addEventListener("click", (e)=> {
-
-      ciudadMomentoPuntoC.classList.toggle("verCiudadDos")
-      selecionCiudad.classList.remove("verCiudad")
-  
-    })
-    ciudadMomentoPuntoC.addEventListener("click", (e)=>{
-  
-      ciudadMomentoC.innerHTML= ciudadEscogidaC.value
-      ciudadMomentoPuntoC.classList.remove("verCiudadDos")
-  
-    })
-    botonDos.addEventListener("click", (e) =>{
-      let valueDos=""
-      let valueTres=""
-  
-      valueDos+=inputInfoB.value
-      valueTres+=inputInfoC.value
-      console.log(valueDos)
-      console.log(valueTres)
-  
-      inputInfoB.value=valueTres
-      inputInfoC.value=valueDos
-  
-      /*Cambio de cuidad*/
-  
-      let ciudadUno=""
-      let ciudadDos=""
-  
-      ciudadUno+=ciudadMomentoB.innerHTML
-      ciudadDos+=ciudadMomentoC.innerHTML
-  
-      ciudadMomentoB.innerHTML=ciudadDos
-      ciudadMomentoC.innerHTML=ciudadUno
-    
-    })
-
-    
-  })
-
+  contenedorParadas.addEventListener("click", oprimirCiudad) 
 }
 puntos()
-
-function agregarParadas(){
-
-  contenedorParadas.addEventListener("click", (e)=>{
-
-  })
-
-}
