@@ -1,0 +1,433 @@
+@import url(https://db.onlinewebfonts.com/c/e695a2b548e145591a266fc50eb492e0?family=Regular);
+
+header{
+  height: 8vh;
+  width: 100vw;
+  background-color: #780803;
+}
+.contenedorHeaderPrin{
+  display: grid;
+  grid-template-columns: 26% 40% 27% 7%;
+  grid-template-rows: 1fr;
+  width: 100%;
+  height: 100%;
+
+}
+.contenedorWiGoRastreo{
+  display: grid;
+  grid-template-columns: 20% 80%;
+  align-items: center;
+  font-size: 18px;
+  color: white;
+  font-family: "Regular" ;
+}
+.logoRastreo{
+  justify-self: center;
+}
+.contenedorMenuRastreo{
+  display: flex;
+  width: 100%;
+  grid-column: 3/4;
+  align-items: center;
+  justify-content: space-evenly;
+  font-size: 12px;
+  color: white;
+  font-family: "Regular";
+}
+
+.pMenuRastreo{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 2.2rem;
+  width: 100%;
+  padding: 0 3px;
+  border-radius: 10px;
+  color: rgb(255, 255, 255);
+  transition: .3s;
+  cursor: pointer;
+}
+
+.pMenuRastreohover:hover{
+  background-color: #780803;
+  box-shadow: 0 0 0 5px #ffffff;
+}
+
+
+.contonedorBtnRastreo{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.btnRastreoNext  {
+  display: flex;
+  justify-content: center;
+  height: 2rem;
+}
+.btnRatreoContent{
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  font-family: "regular";
+  padding: 0 10px;
+  font-weight: 600;
+  font-size: 12px;
+  color: black;
+  background: #ffffff;
+  transition: 1s;
+  border-radius: 100px;
+  box-shadow: 0 0 0.2em 0 #ffffff;
+  cursor: pointer;
+}
+
+.btnRatreoContent:hover, .btnRatreoContent:focus {
+  transition: 0.5s;
+  -webkit-animation: btnRatreoContent 1s;
+  animation: btnRatreoContent 1s;
+  outline: 0.1em solid transparent;
+  outline-offset: 0.2em;
+  box-shadow: 0 0 0.4em 0 #ffffff;
+}
+
+.btnRatreoContent .iconoArrow {
+  transition: 0.5s;
+  margin-right: 0px;
+  transform: scale(0.6);
+}
+
+.btnRatreoContent:hover .iconoArrow {
+  transition: 0.5s;
+  margin-right: 8px;
+}
+
+.iconoArrow{
+  width: 20px;
+  position: relative;
+  top: 2.5;
+}
+
+#arrow-icon-one {
+  transition: 0.4s;
+  transform: translateX(-60%);
+}
+
+#arrow-icon-two {
+  transition: 0.5s;
+  transform: translateX(-30%);
+}
+
+.btnRatreoContent:hover #arrow-icon-three {
+  animation: color_anim 1s infinite 0.2s;
+}
+
+.btnRatreoContent:hover #arrow-icon-one {
+  transform: translateX(0%);
+  animation: color_anim 1s infinite 0.6s;
+}
+
+.btnRatreoContent:hover #arrow-icon-two {
+  transform: translateX(0%);
+  animation: color_anim 1s infinite 0.4s;
+}
+
+
+/* SVG animations */
+@keyframes color_anim {
+  0% {
+    fill: rgb(0, 0, 0);
+  }
+
+  50% {
+    fill: #00000080;
+  }
+
+  100% {
+    fill: rgb(0, 0, 0);
+  }
+}
+
+/* Button animations */
+@-webkit-keyframes btnRatreoContent {
+  0% {
+    outline: 0.2em solid white;
+    outline-offset: 0;
+  }
+}
+
+@keyframes btnRatreoContent {
+  0% {
+    outline: 0.2em solid white;
+    outline-offset: 0;
+  }
+}
+
+
+
+
+/*main*/
+main{
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 92vh;
+}
+.contenedorpadre {
+  display:grid;
+  grid-template-columns: 50% 50%;
+  width:85%;
+  height:80%;
+  padding: 30px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+.barralateral{
+  display: grid;
+  grid-template-rows: 7% 20% 10% 10% 8% 15% 8%;
+  margin: 0 3rem ;
+  row-gap: 10px;
+  padding: 2rem 5rem 2rem 5rem;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+}
+
+.seContenedorCiudades{
+  display: flex;
+  justify-content:space-between ;
+  align-items: center;
+  width: 91%;
+  padding: 0 20px;
+  margin: 8px 10px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+
+}
+.flechaRastreo{
+  position: relative;
+  top: 3px;
+  cursor: pointer;
+}
+
+.seleccCiudad{
+  display: none;
+  position: absolute;
+  z-index: 1000;
+
+  top: 24.6%;
+  width: 33.3rem;
+  left: 14.8%;
+}
+.seleccCiudad, option{
+
+  background-color: transparent;
+}
+
+#selecionCiudad{
+  width: 100%;
+  outline: none;
+  padding: 0 20px ;
+  border: none;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  background: white;
+  font-family: "Regular";
+
+}
+
+option:hover{
+  background: #780803;
+  cursor: pointer;
+  color: white;
+}
+.verCiudad{
+  display: block;
+}
+.contenedorPuntos{
+  display: grid;
+  row-gap: 3px;
+  grid-template-rows: 42% 16% 42%;
+}
+.contenedorPuntoA{
+  display: grid;
+  grid-template-columns: 20% 80%;
+  align-items: center;
+  margin-left: 10px;
+  border-radius: 5px;
+  border: 1px solid black;
+}
+.contedorTextA{
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  font-family: "Regular";
+  background-color: #780803;
+  color: white;
+}
+
+.dirrecionRastreo{
+  display: grid;
+  grid-template-columns: 3% 71% 26%;
+  align-items: center;
+  padding-left: 5px ;
+
+}
+.direccionIn{
+  width: 100%;
+  outline: none;
+  border: none;
+  font-family: "Regular";
+  font-size: 13px;
+  padding-bottom: 3px;
+  opacity: 0.7;
+}
+.ciudadInputSelect{
+  display: grid;
+  grid-template-columns: 75% 25%;
+  justify-self: center;
+  align-items: center;
+  font-size: 12px;
+  cursor: pointer;
+  margin-left: 5px;
+  padding-left: 8px;
+  height: 2.3rem;
+  width: 78%;
+  border: 0;
+  border-radius: 20px ;
+  background-color: #780803;
+  color: #ffffff;
+  transition: all 0.5s;
+  -webkit-transition: all 0.5s;
+}
+.arrowCiudad{
+  align-self: center;
+  justify-self: center;
+}
+
+.ciudadInputSelect:hover {
+  background-color: #780803;
+  box-shadow: 0 0 20px #6fc5ff50;
+  transform: scale(1.03);
+}
+
+.ciudadInputSelect:active {
+  background-color: #000000;
+  transition: all 0.25s;
+  -webkit-transition: all 0.25s;
+  box-shadow: none;
+  transform: scale(0.98);
+}
+
+.seleccCiudadPuntoA{
+  display: none;
+  top: 31.3%;
+  left: 38%;
+  width: 9.3rem;
+
+}
+.seleccCiudadPuntoB{
+  top:39.5%;
+  left: 38%;
+}
+.verCiudadDos{
+  display: block;
+}
+
+.contenedorIntercambio{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.contenedorGeneralAgregar{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.conteAgregar{
+  display: grid;
+  grid-template-columns: 13% 87%;
+  column-gap: 5px;
+  align-items: center;
+  cursor: pointer;
+  font-family: "regular";
+}
+
+/*clases contenedor nuevo*/
+
+.contenedorPuntoNuevo{
+  height: 3rem;
+}
+.adicionGridPrincipal{
+  grid-template-rows: 7% 32.3% 10% 10% 8% 15% 8%;
+}
+.adicionGridPuntos{
+  grid-template-rows: 25% 10% 25% 10% 25%;
+}
+.seleccCiudadPuntoC{
+  top:47.4%;
+  left: 38%;
+}
+
+/*api*/
+#apikey {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+#container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+
+#sidebar {
+  flex-basis: 15rem;
+  flex-grow: 1;
+  padding: 1rem;
+  max-width: 30rem;
+  height: 100%;
+  box-sizing: border-box;
+  overflow: auto;
+  display:none;
+}
+
+#map {
+  flex-basis: 0;
+  flex-grow: 4;
+  height: 100%;
+}
+
+#sidebar {
+  flex-direction: column;
+}
+
+.barra {
+  position: relative;
+  left:1px;
+  width:25%;
+  height:95vh;
+  position:fixed;
+  background-color: rgb(197, 192, 192);
+}
+
+.row {
+  position: relative;
+  width:320px;    
+  background-color: white;
+  padding-left: 10px;
+  top:40px;
+  left:40px;
+  text-align: center;
+
+}
+
+.mapa {
+  position: relative;
+  width:170vh;
+  height:90vh;
+  left: 435px;
+  margin: 0;
+  padding:0;
+  
+}
+

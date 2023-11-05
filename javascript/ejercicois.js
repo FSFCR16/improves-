@@ -201,19 +201,14 @@ function solution(roman) {
 
 
 function solution(string) {
-
     let array = string.split("")
-
     for (let i = 0; i < array.length; i++ ){
         if(array[i]== array[i].toUpperCase()){
             i+=1
-            array.splice(i-1, 0, "-")
-            
+            array.splice(i-1, 0, "-")   
         }
     }
     console.log(array.join("").split("-").join(" "))
-
-
 }
 
 
@@ -226,5 +221,4 @@ function solution1(string) {
     })
     console.log(string.join(''))
   }
-
   solution1("caemlCaseGtesting")
