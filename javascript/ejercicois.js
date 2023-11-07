@@ -305,4 +305,18 @@ function toHex(d) {
                                                 //en el ejemplo esta en base 2 pero puedes usar la base que quieras
 }
 
-rgbTres( 110, 20, -30)
+
+
+function humanReadable (seconds) {
+
+    let minutos=60*parseFloat("0."+((seconds/60)/60).toString().split(".")[1])
+    let segundos=Math.round(60*parseFloat("0."+minutos.toString().split(".")[1]))
+
+    let resultado=Math.floor((seconds/60)/60) <= 9 ? "0" + Math.floor((seconds/60)/60) : Math.floor((seconds/60)/60) ;
+    let resultadoMin=Math.floor(minutos) <= 9 ? "0" + Math.floor(minutos) : Math.floor(minutos) == 60 ? "00": Math.floor(minutos);
+    let resultadoSeg=segundos <= 9 ? "0" + segundos : segundos == 60 ? "00": segundos ;
+    console.log(`${resultado}:${resultadoMin}:${resultadoSeg}`)
+
+}
+
+humanReadable(59)
