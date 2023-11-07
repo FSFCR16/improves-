@@ -301,7 +301,8 @@ function rgbTres(r, g, b){
 function toHex(d) {
     if(d < 0 ) {return "00";}
     if(d > 255 ) {return "FF";}
-   console.log((("0"+(Number(d).toString(2)))))
+   console.log((("0"+(Number(d).toString(2)))))//tostring no solo lo convierte en string tambien si le indicas un numero te lo convierte a esa base
+                                                //en el ejemplo esta en base 2 pero puedes usar la base que quieras
 }
 
 rgbTres( 110, 20, -30)
