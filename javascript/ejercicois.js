@@ -221,4 +221,87 @@ function solution1(string) {
     })
     console.log(string.join(''))
   }
-  solution1("caemlCaseGtesting")
+
+
+function rgb(r, g, b) {
+    let hexadecimal={0:0, 1:1, 2:2, 3:3, 4:4, 5:5, 6:6, 7:7, 8:8, 9:9, 
+                    10:"A", 11:"B", 12:"C", 13:"D", 14:"E", 15:"F"}
+    let valores=Object.values(hexadecimal)
+    let hexadecimalResultado="#"
+    r > 255 ? r = 255: r < 0 ? r = 0: r ;
+    g > 255 ? g = 255: g < 0 ? g = 0: g ;
+    b > 255 ? b = 255: b < 0 ? b = 0: b ;
+    for (let i= 0, j=0; j<valores.length+1; i++){
+        if(j==16)break
+        let result= (j*16)+i
+        if (r == result ){
+            hexadecimalResultado+=hexadecimal[j]
+            hexadecimalResultado+=hexadecimal[i]
+        }
+        if(i==15){
+            j++
+            i=-1
+        }
+    }
+    for (let a= 0, b=0; b<valores.length+1; a++){
+        if(b==16)break
+        let resultDos= (b*16)+a
+        if (g == resultDos){
+            hexadecimalResultado+=hexadecimal[b]
+            hexadecimalResultado+=hexadecimal[a]
+        }
+        if(a==15){
+            b++
+            a=-1
+        }
+    }
+    for (let d= 0, e=0; e<valores.length+1; d++){
+        if(e==16)break
+        let resultTres= (e*16)+d
+        if (b == resultTres){
+            hexadecimalResultado+=hexadecimal[e]
+            hexadecimalResultado+=hexadecimal[d]
+        }
+        if(d==15){
+            e++
+            d=-1
+        }
+    }
+    console.log(hexadecimalResultado)
+                    
+
+}
+
+
+function rgbDos(r,g,b){
+    let hexadecimal={0:0, 1:1, 2:2, 3:3, 4:4, 5:5, 6:6, 7:7, 8:8, 9:9, 
+        10:"A", 11:"B", 12:"C", 13:"D", 14:"E", 15:"F"}
+    r > 255 ? r = 255: r < 0 ? r = 0: r ;
+    g > 255 ? g = 255: g < 0 ? g = 0: g ;
+    b > 255 ? b = 255: b < 0 ? b = 0: b ;
+
+    let resultadoR= Math.floor(r/16)
+    let resultadoRdos=r-(resultadoR*16)
+    let resultadoG= Math.floor(g/16)
+    let resultadoGdos=g-(resultadoG*16)
+    let resultadoB= Math.floor(b/16)
+    let resultadoBdos=b-(resultadoB*16)
+
+    let resultadoFinal=`${hexadecimal[resultadoR]}${hexadecimal[resultadoRdos]}${hexadecimal[resultadoG]}${hexadecimal[resultadoGdos]}${hexadecimal[resultadoB]}${hexadecimal[resultadoBdos]}`
+    
+    return resultadoFinal
+
+}
+
+
+function rgbTres(r, g, b){
+	console.log(toHex(r)+toHex(g)+toHex(b));
+}
+
+function toHex(d) {
+    if(d < 0 ) {return "00";}
+    if(d > 255 ) {return "FF";}
+   console.log((("0"+(Number(d).toString(2)))))
+}
+
+rgbTres( 110, 20, -30)

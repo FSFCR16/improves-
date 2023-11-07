@@ -362,6 +362,13 @@ option:hover{
   left: 38%;
 }
 
+.cerrarPuntoC{
+  position: absolute;
+  left: 43%;
+  top: 33.5%;
+  cursor: pointer;
+}
+
 /*api*/
 #apikey {
   height: 100%;

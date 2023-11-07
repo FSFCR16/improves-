@@ -200,6 +200,8 @@ let contenedorPuntos=document.querySelector(".contenedorPuntos")
 
 function oprimirCiudad(){
 
+  contenedorParadas.style.display= "none"
+
   /*adicion de clases*/
   contenedorPuntos.classList.add("adicionGridPuntos")
   barraLateral.classList.add("adicionGridPrincipal")
@@ -232,6 +234,9 @@ function oprimirCiudad(){
                                       <p class="ciudadMomento ciudadMomentoC" style="font-family: Regular;">Chia</p>
                                       <i class="fa-solid fa-angle-down arrowCiudad" style="color: #ffffff;"></i>
                                     </section>
+                                    <section class="cerrarPuntoC">
+                                      <i class="fa-regular fa-circle-xmark" style="color: #000000;"></i>
+                                    </section>
                                     <article class="seleccCiudad seleccCiudadPuntoC ">
                                       <select name="SeleccionCiudades" id="seleccionCiudadC" size="6">
                                         <option value="Boogota" class="options">Boogota</option>
@@ -254,6 +259,7 @@ function oprimirCiudad(){
   let ciudadMomentoC=document.querySelector(".ciudadMomentoC")
   let inputInfoC=document.querySelector(".direccionInC")
   let botonDos= document.querySelector(".interCambioDos")
+  let cerrar=document.querySelector(".cerrarPuntoC")
   
 
   ciudadInputSelectC.addEventListener("click", ()=> {
@@ -290,9 +296,10 @@ function oprimirCiudad(){
 
     ciudadMomentoB.innerHTML=ciudadDos
     ciudadMomentoC.innerHTML=ciudadUno
-  
+
   })
   
+
   return [ciudadMomentoPuntoC, ciudadMomentoC]
 
 }
@@ -300,5 +307,7 @@ function oprimirCiudad(){
 function puntos(){
 
   contenedorParadas.addEventListener("click", oprimirCiudad) 
+
 }
 puntos()
+
