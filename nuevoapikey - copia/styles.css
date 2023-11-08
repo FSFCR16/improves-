@@ -182,11 +182,12 @@ main{
 
 .barralateral{
   display: grid;
-  grid-template-rows: 7% 20% 10% 10% 8% 15% 8%;
+  grid-template-rows: 7% 20% 10% 10% 8% 15% 10%;
   margin: 0 3rem ;
   row-gap: 10px;
   padding: 2rem 5rem 2rem 5rem;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+  overflow-y: scroll;
 }
 
 .seContenedorCiudades{
@@ -240,12 +241,16 @@ option:hover{
 }
 .contenedorPuntos{
   display: grid;
+  grid-template-rows: 42% 14% 42%;
+  grid-auto-rows: auto;
   row-gap: 3px;
-  grid-template-rows: 42% 16% 42%;
+  align-items: center;
+
 }
 .contenedorPuntoA{
   display: grid;
   grid-template-columns: 20% 80%;
+  height: 3rem;
   align-items: center;
   margin-left: 10px;
   border-radius: 5px;
@@ -351,12 +356,6 @@ option:hover{
 .contenedorPuntoNuevo{
   height: 3rem;
 }
-.adicionGridPrincipal{
-  grid-template-rows: 7% 32.3% 10% 10% 8% 15% 8%;
-}
-.adicionGridPuntos{
-  grid-template-rows: 25% 10% 25% 10% 25%;
-}
 .seleccCiudadPuntoC{
   top:47.4%;
   left: 38%;
@@ -364,9 +363,14 @@ option:hover{
 
 .cerrarPuntoC{
   position: absolute;
-  left: 43%;
-  top: 33.5%;
+  left: 42.3%;
+  top: 41%;
   cursor: pointer;
+}
+
+.textoA{
+  margin: 0;
+  align-self: center;
 }
 
 /*api*/

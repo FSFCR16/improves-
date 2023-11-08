@@ -130,3 +130,144 @@ console.log(new Date("2023 11 16 02:30:50:222").toDateString())//ddevuleve en fo
 console.log(new Date("2023 11 16 02:30:50:222").toLocaleDateString())//devuelve la fecha en el formato que corresponda con la localidad actual, es decir sumando o restando el GMT que corresponda
 console.log(new Date("2023 11 16 14:30:50:222").toLocaleTimeString())//devuelve la hora en el formato que corresponda con la localidad actual, es decir sumando o restando el GMT que corresponda
 console.log(new Date("2023 11 16 14:30:50:222").toLocaleString())//Una combinacion de las dos anteriores
+
+console.log("continuacion")
+console.log()
+console.log()
+//Objeto DateTimeFormat
+
+console.log(new Intl.DateTimeFormat().format(new Date))
+
+//A este objeto se puede enviar sin parametros y devuelve la fecha de la region que tiene la pc
+//Pero si quisieramos enviarle un parametro este onjeto recibe dos, el pimero que es el codigo de la region segun el estandar BCP 47
+//Y el segundo que es una serie de propiedades escritas en formato json 
+
+//Porpiedades
+
+//Full-- Para indicar que se muetres la fecha con formato largo, que se indique hasta el dia de la semana
+//long-- Para indicar que se muestre la fecha en formato largo sin el dia de la semana 
+//medium-- para indicar que se meustre la fecha en formato con el mes abreviado, por ejemplo "10 nov 2023"
+//short-- Para indicar que la fehca se muestre en formato corto solo numeros-- 10/11/2023
+//por defecto el valor de esta propiedad es shor 
+
+let fechaShort=new Intl.DateTimeFormat("es-ES", {
+    dateStyle: "short"
+
+})
+console.log(fechaShort.format(new Date()))
+
+//Propieda day
+
+//tiene dos valores "numeric" para indicar que muestre el dia sin cero adelante y dos para indicar que se muetsre con dos digitos
+//pot defecto su valor es numeric
+
+let options={
+    timeZone:"Europe/Madrid",
+    day: "2-digit"
+}
+
+
+let fechaMadrid=new Date("2023-11-10")
+console.log(Intl.DateTimeFormat("es-ES", options).format(fechaMadrid))
+
+//propiedad hour
+
+//Es exactamente igual que day solo que esta es para las horas
+let optionsD={
+    timeZone:"Europe/Madrid",
+    hour: "2-digit"
+}
+
+
+let horaMadrid=new Date('2023-11-08 1:02:43')
+console.log(Intl.DateTimeFormat("es-ES", optionsD).format(horaMadrid))
+
+
+//Propiedad 12 hour
+//Establece que el formato de la hora sea de 12 horas si le envias como valor booleano un true si es false sera de 24 el formato
+
+let opciones={
+    timeStyle:"medium",
+    timeZone: "Europe/Madrid",
+    hour12:true
+}
+
+console.log(Intl.DateTimeFormat("es-ES",opciones).format(new Date()))
+
+//propiedad minute
+//Exactamente lo mismo que hour y day solo que para minutos
+
+let opcionesMinutos={
+    timeZone:"Europe/Madrid",
+    minute: "2-digit"
+}
+
+minuto= new Date("2023/11/08 18:5:34")
+console.log(Intl.DateTimeFormat("es-ES", opcionesMinutos).format(minuto))
+
+//Propiedad month
+//Exactamente lo mismo que hour y day solo que para meses
+let opcionesMeses={
+    timeZone:"Europe/Madrid",
+    month: "2-digit"
+}
+
+mes= new Date("2023/3/08 18:5:34")
+console.log(Intl.DateTimeFormat("es-ES", opcionesMeses).format(mes))
+
+//Propiedad second
+let opcioneSegundos={
+    timeZone:"Europe/Madrid",
+    second: "2-digit"
+}
+
+segundos= new Date("2023/3/08 18:5:4")
+console.log(Intl.DateTimeFormat("es-ES",opcioneSegundos).format(segundos))
+
+//Propiedades de timeStyle
+
+// Full-- para mostrar la hora con formato largo con el texto del uso horario
+// long-- para mostrar en formato largo pero esta vez con la breviatura del uso horario
+// medium-- para que solo se muetsre hora, min y segundos
+// short-- para indicar que se muetsr la hora sin los segundos
+// Por defecto su valor es medium
+
+let optionTime={
+    timeStyle: "short"
+}
+console.log(Intl.DateTimeFormat("es-ES", optionTime).format(new Date()))// Aqui se muestra la hora local
+
+
+//Propiedad TimeZone
+optionTime={
+    timeStyle: "short",
+    timeZone:"America/Argentina/Buenos_Aires"
+}
+console.log(Intl.DateTimeFormat("es-ES", optionTime).format(new Date()))// Aqui se muestra la hora de Buenos aires
+
+//Propiedades de weekDay
+
+// long-- para mostrar el dia de la semana con formato largo el dia completo
+// short-- para mostrar el dia version corta "Dom" por ejemplo
+// narrow-- para indicar que solo muestre la inicial del dia
+
+optionTime={
+    timeZone:"America/Argentina/Buenos_Aires",
+    weekday: "short"
+}
+console.log(Intl.DateTimeFormat("es-ES", optionTime).format(new Date()))// Aqui el dia de la semana
+
+//propiedad year
+//Exactamente lo mismo que hour, minute y second
+let opcionYear={
+    timeZone:"Europe/Madrid",
+    year: "2-digit"
+}
+
+año= new Date("2023/3/08 18:5:4")
+console.log(Intl.DateTimeFormat("es-ES",opcionYear).format(año))//solo muestra dos digitos los dos ultimos
+
+
+
+
+

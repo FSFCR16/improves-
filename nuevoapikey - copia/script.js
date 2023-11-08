@@ -200,11 +200,7 @@ let contenedorPuntos=document.querySelector(".contenedorPuntos")
 
 function oprimirCiudad(){
 
-  contenedorParadas.style.display= "none"
-
-  /*adicion de clases*/
-  contenedorPuntos.classList.add("adicionGridPuntos")
-  barraLateral.classList.add("adicionGridPrincipal")
+  contenedorParadas.style.display="none"
 
   /*contenedor intercambio*/
 
@@ -260,7 +256,8 @@ function oprimirCiudad(){
   let inputInfoC=document.querySelector(".direccionInC")
   let botonDos= document.querySelector(".interCambioDos")
   let cerrar=document.querySelector(".cerrarPuntoC")
-  
+  let contenedorPadreC=document.querySelector(".contenedorPuntoNuevo")
+  let intercambioDos=document.querySelector(".interCambioDos")
 
   ciudadInputSelectC.addEventListener("click", ()=> {
 
@@ -296,6 +293,14 @@ function oprimirCiudad(){
 
     ciudadMomentoB.innerHTML=ciudadDos
     ciudadMomentoC.innerHTML=ciudadUno
+
+  })
+  cerrar.addEventListener("click", ()=>{
+
+    contenedorPadreC.remove()
+    intercambioDos.remove()
+    articleNuevo.remove()
+    contenedorParadas.style.display="grid"
 
   })
   
