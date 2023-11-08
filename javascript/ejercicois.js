@@ -327,3 +327,19 @@ function humanReadable(seconds) {
            pad(seconds % 60)
   }
 
+  function digPow(n, p){
+    let array=n.toString().split("")
+    let resultado=0
+
+    for(let i = 0; i < array.length; i++){
+        
+        array[i]=array[i]=Math.pow(parseInt(array[i]), p+i)
+        resultado+=parseInt(array[i])
+
+    }
+    let res=resultado<n ? resultado=-1 :resultado%n==0 ? resultado/n: -1;
+    console.log(res)
+    
+  }
+
+digPow(46288, 3)

@@ -182,7 +182,7 @@ main{
 
 .barralateral{
   display: grid;
-  grid-template-rows: 7% 20% 10% 10% 8% 15% 10%;
+  grid-template-rows: 7% 20% 10% 14% 8% 15% 10%;
   margin: 0 3rem ;
   row-gap: 10px;
   padding: 2rem 5rem 2rem 5rem;
@@ -241,8 +241,7 @@ option:hover{
 }
 .contenedorPuntos{
   display: grid;
-  grid-template-rows: 42% 14% 42%;
-  grid-auto-rows: auto;
+  grid-template-rows: 42% 16% 42%;
   row-gap: 3px;
   align-items: center;
 
@@ -353,6 +352,12 @@ option:hover{
 
 /*clases contenedor nuevo*/
 
+.contenedorBarraGrid{
+  grid-template-rows: 7% auto 10% 10% 8% 15% 10%;
+}
+.nuevoGridPuntos{
+  grid-template-rows: auto;
+}
 .contenedorPuntoNuevo{
   height: 3rem;
 }
@@ -372,7 +377,59 @@ option:hover{
   margin: 0;
   align-self: center;
 }
+/*continuamos con la pagina*/
 
+.seleccionarAccion{
+  display: grid;
+  grid-template-rows: auto auto;
+}
+.preguntaRastreo{
+  display: flex;
+  align-items: center;
+  height: 1.2rem;
+  font-family: "regular";
+  font-size: 14px;
+}
+.contenedorRecoger{
+  height: 4.4rem;
+}
+
+.contenedorRecoger{
+  display: grid;
+  grid-template-columns: repeat(3,33.3%);
+  margin-left: 10px;
+
+}
+
+.paquete{
+  display: grid;
+  grid-template-rows: auto auto;
+  align-items: center;
+  justify-content: center;
+  padding-top: 10px;
+  cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+}
+.paquetejs{
+  color: #ffffff;
+  background-color: #780803;
+}
+
+.envelope{
+  display: flex;
+  justify-content: center;
+  height:2.5rem ;
+  color: #ffffff;
+}
+
+.textEnvelope{
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  height: 0.9rem;
+  margin-bottom: 15px;
+  font-family: "regular";
+}
 /*api*/
 #apikey {
   height: 100%;

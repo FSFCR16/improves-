@@ -111,7 +111,7 @@ function oprimirFlecha(){
     selecionCiudad.classList.toggle("verCiudad")
     ciudadMomentoPuntoA.classList.remove("verCiudadDos")
     ciudadMomentoPuntoB.classList.remove("verCiudadDos")
-    oprimirCiudad()[0].classList.remove("verCiudadDos")
+
 
   })
   ciudadEscogida.addEventListener("click", (e) => {
@@ -120,7 +120,6 @@ function oprimirFlecha(){
     let ciudad=ciudadEscogida.value.split(",")
     ciudadMomentoA.innerHTML= ciudad[0]
     ciudadMomentoB.innerHTML= ciudad[0]
-    oprimirCiudad()[1].innerHTML=ciudad[0]
 
     selecionCiudad.classList.remove("verCiudad")
 
@@ -131,7 +130,7 @@ function oprimirFlecha(){
     ciudadMomentoPuntoA.classList.toggle("verCiudadDos")
     selecionCiudad.classList.remove("verCiudad")
     ciudadMomentoPuntoB.classList.remove("verCiudadDos")
-    oprimirCiudad()[0].classList.remove("verCiudadDos")
+
 
 
   })
@@ -145,8 +144,6 @@ function oprimirFlecha(){
 
     ciudadMomentoPuntoB.classList.toggle("verCiudadDos")
     selecionCiudad.classList.remove("verCiudad")
-    oprimirCiudad()[0].classList.remove("verCiudadDos")
-
 
   })
   ciudadMomentoPuntoB.addEventListener("click", (e)=>{
@@ -202,12 +199,15 @@ function oprimirCiudad(){
 
   contenedorParadas.style.display="none"
 
+  contenedorPuntos.classList.add("nuevoGridPuntos")
+  barraLateral.classList.add("contenedorBarraGrid")
+
   /*contenedor intercambio*/
 
   contenedorPrincipalPar.after(articleNuevo)
   articleNuevo.innerHTML=`<article class="contenedorIntercambio interCambioDos">
-  <i class="fa-solid fa-arrow-down-up-across-line" style="color: #780803;"></i>
-</article>`
+                            <i class="fa-solid fa-arrow-down-up-across-line" style="color: #780803;"></i>
+                          </article>`
 
 
 
@@ -254,7 +254,6 @@ function oprimirCiudad(){
   let ciudadMomentoPuntoC=document.querySelector(".seleccCiudadPuntoC")
   let ciudadMomentoC=document.querySelector(".ciudadMomentoC")
   let inputInfoC=document.querySelector(".direccionInC")
-  let botonDos= document.querySelector(".interCambioDos")
   let cerrar=document.querySelector(".cerrarPuntoC")
   let contenedorPadreC=document.querySelector(".contenedorPuntoNuevo")
   let intercambioDos=document.querySelector(".interCambioDos")
@@ -271,7 +270,7 @@ function oprimirCiudad(){
     ciudadMomentoPuntoC.classList.remove("verCiudadDos")
 
   })
-  botonDos.addEventListener("click", (e) =>{
+  intercambioDos.addEventListener("click", (e) =>{
     let valueDos=""
     let valueTres=""
 
@@ -295,18 +294,32 @@ function oprimirCiudad(){
     ciudadMomentoC.innerHTML=ciudadUno
 
   })
-  cerrar.addEventListener("click", ()=>{
+  flechaRastreo.addEventListener("click", (e)=>{
+    ciudadMomentoPuntoC.classList.remove("verCiudadDos")
+  })
 
+  ciudadEscogida.addEventListener("click", (e)=>{
+    let ciudad=ciudadEscogida.value.split(",")
+    ciudadMomentoC.innerHTML=ciudad[0]
+
+  })
+
+  ciudadInputSelect.addEventListener("click", (e)=>{
+    ciudadMomentoPuntoC.classList.remove("verCiudadDos")
+  })
+
+  ciudadInputSelectB.addEventListener("clcik", (e)=>{
+    ciudadMomentoPuntoC.classList.remove("verCiudadDos")
+  })
+  cerrar.addEventListener("click", ()=>{
+    contenedorPuntos.classList.remove("nuevoGridPuntos")
+    barraLateral.classList.remove("contenedorBarraGrid")
     contenedorPadreC.remove()
     intercambioDos.remove()
     articleNuevo.remove()
     contenedorParadas.style.display="grid"
 
   })
-  
-
-  return [ciudadMomentoPuntoC, ciudadMomentoC]
-
 }
 
 function puntos(){
@@ -315,4 +328,18 @@ function puntos(){
 
 }
 puntos()
+
+//codigo para la zona de paquetes
+
+let sobre=document.querySelector(".paquete")
+let sobreImg=document.querySelector(".sobreImg")
+
+
+function paquetes(){
+  sobre.addEventListener("click", ()=>{
+    sobre.classList.toggle("paquetejs")
+
+  })
+}
+paquetes()
 
