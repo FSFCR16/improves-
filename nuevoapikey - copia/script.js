@@ -3,80 +3,67 @@
  * Copyright 2019 Google LLC. All Rights Reserved.
  * SPDX-License-Identifier: Apache-2.0
  */
-function initMap() {
-  const bounds = new google.maps.LatLngBounds();
-  const markersArray = [];
-  const map = new google.maps.Map(document.getElementById("map"),{
-    zoom: 10,
-  });
-  // initialize services
-  const geocoder = new google.maps.Geocoder();
-  const service = new google.maps.DistanceMatrixService();
-  // build request
-  const origin1 = { lat: 4.609, lng: -74.081 };
-  const destinationB = { lat: 4.85876, lng: -74.05866 };
-  const request = {
-    origins: [origin1],
-    destinations: [destinationB],
-    travelMode: google.maps.TravelMode.DRIVING,
-    unitSystem: google.maps.UnitSystem.METRIC,
-    avoidHighways: false,
-    avoidTolls: false,
-  };
+let inputInfoB=document.querySelector(".direccionInB")
+let inputInfoA=document.querySelector(".direccionInA")
+let botonCambio=document.querySelector(".contenedorIntercambio")
 
-  // put request on page
-  document.getElementById("request").innerText = JSON.stringify(
-    request,
-    null,
-    2
-  );
-  // get distance matrix response
-  service.getDistanceMatrix(request).then((response) => {
-    // put response
-    document.getElementById("response").innerText = JSON.stringify(
-      response.rows[0].elements[0].duration.text,
-      null,
-      2
-    );
+class Localizacion{
 
-    // show on map
-    const originList = response.originAddresses;
-    const destinationList = response.destinationAddresses;
-
-    deleteMarkers(markersArray);
-
-    const showGeocodedAddressOnMap = (asDestination) => {
-      const handler = ({ results }) => {
-        console.log(results)
-        map.fitBounds(bounds.extend(results[0].geometry.location));
-        markersArray.push(
-          new google.maps.Marker({
-            map,
-            position: results[0].geometry.location,
-            label: asDestination ? "D" : "O",
+  constructor(callback){
+      if(navigator.geolocation){
+          navigator.geolocation.getCurrentPosition((position)=>{
+              this.latitud =position.coords.latitude
+              this.longitud =position.coords.longitude
+              callback();
           })
-        );
-      };
-      return handler;
-    };
-
-    for (let i = 0; i < originList.length; i++) {
-      const results = response.rows[i].elements;
-  
-
-      geocoder
-        .geocode({ address: originList[i] })
-        .then(showGeocodedAddressOnMap(false));
-        
-
-      for (let j = 0; j < results.length; j++) {
-        geocoder
-          .geocode({ address: destinationList[j] })
-          .then(showGeocodedAddressOnMap(true));
+      }else{
+          alert("No se pudo realizar esat accion")
       }
-    }
-  });
+  }
 }
+
+
+let ubicacion= new Localizacion()
+
+
+
+function initMap(){
+
+  const ubicacion= new Localizacion(()=>{
+
+    const latLong={lat: ubicacion.latitud, lng: ubicacion.longitud}
+
+    let texto= "<h1> Nombre del lugar </h1>" + "<p> Descripcion del lugar <p>" + "<a href='#'>Pagina Web</a>"
+
+
+
+    const options = {
+      center: latLong,
+      zoom: 14
+    }
+
+    let map=document.getElementById("map");
+
+    const mapa =new google.maps.Map(map, options)
+
+    const marcador= new google.maps.Marker({
+      position: latLong,
+      map:mapa,
+      title:"Mi primer marcador"
+    })
+
+    let informacion =new google.maps.InfoWindow({
+      content: texto
+    })
+
+    marcador.addListener("click", ()=>{
+      informacion.open(mapa,marcador)
+    })
+
+  });
+
+}
+
 
 function deleteMarkers(markersArray) {
   for (let i = 0; i < markersArray.length; i++) {
@@ -84,6 +71,7 @@ function deleteMarkers(markersArray) {
   }
 
   markersArray = [];
+
 }
 
 /*---------------------------------------------------------*/
@@ -155,11 +143,6 @@ function oprimirFlecha(){
 
 }
 let oprimiCiudades=oprimirFlecha()
-
-let inputInfoB=document.querySelector(".direccionInB")
-let inputInfoA=document.querySelector(".direccionInA")
-let botonCambio=document.querySelector(".contenedorIntercambio")
-
 
 function cambiarInfo(){
   botonCambio.addEventListener("click", (e) =>{

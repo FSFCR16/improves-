@@ -182,7 +182,7 @@ main{
 
 .barralateral{
   display: grid;
-  grid-template-rows: 7% 20% 10% 14% 8% 15% 10%;
+  grid-template-rows: 7% 20% 10% auto auto 15% 10%;
   margin: 0 3rem ;
   row-gap: 10px;
   padding: 2rem 5rem 2rem 5rem;
@@ -353,7 +353,7 @@ option:hover{
 /*clases contenedor nuevo*/
 
 .contenedorBarraGrid{
-  grid-template-rows: 7% auto 10% 10% 8% 15% 10%;
+  grid-template-rows: 7% auto 0 auto auto 15% 10%;
 }
 .nuevoGridPuntos{
   grid-template-rows: auto;
@@ -369,7 +369,7 @@ option:hover{
 .cerrarPuntoC{
   position: absolute;
   left: 42.3%;
-  top: 41%;
+  top: 43%;
   cursor: pointer;
 }
 
@@ -386,12 +386,13 @@ option:hover{
 .preguntaRastreo{
   display: flex;
   align-items: center;
-  height: 1.2rem;
+  height: auto;
   font-family: "regular";
   font-size: 14px;
+  margin-left: 10px;
 }
 .contenedorRecoger{
-  height: 4.4rem;
+  height: auto;
 }
 
 .contenedorRecoger{
