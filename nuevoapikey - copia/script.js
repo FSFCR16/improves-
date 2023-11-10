@@ -35,7 +35,9 @@ function initMap(){
     const directionsService = new google.maps.DirectionsService();
     const directionsRenderer = new google.maps.DirectionsRenderer();
 
-    /*geocodificacion*/
+    let selecion=document.getElementById("selecionCiudad");
+    let botonIntercambio=document.querySelector(".fa-arrow-down-up-across-line")
+
     /*opciones del marcador*/
 
     const options = {
@@ -50,6 +52,23 @@ function initMap(){
     let map=document.getElementById("map");
 
     const mapa =new google.maps.Map(map, options)
+
+    /*geocodificacion*/
+
+    let addressInicial= ""
+
+    selecion.addEventListener("click", ()=>{
+      addressInicial=selecion.value;
+      geocode.geocode({'address': addressInicial}, function(result, status){
+        console.log(result)
+        if(status == "OK"){
+          mapa.setCenter(result[0].geometry.location);
+        }else{
+          alert("No se pudo ir a la ubicacion, verifique bien")
+        }
+      })
+
+    })
 
     /* creacion del marcador */
 
@@ -118,17 +137,6 @@ function initMap(){
       marcador.setPosition(place.geometry.location)
       marcador.setVisible(true)
 
-      let address="";
-      if (place.address_components){
-        address=[
-          (place.address_components[0] && place.address_components[0].long_name || ''),
-          (place.address_components[1] && place.address_components[1].long_name || ''),
-          (place.address_components[2] && place.address_components[2].long_name || ''),
-        ];
-
-        informacion.setContent('<section><strong>'+ place.name +'</strong><br>'+ address+ '</section>')
-        informacion.open(mapa, marcador)
-      }
       /* poner informacion en el mapa marcadorB*/
     })
     busquedaDestino.addListener("place_changed", ()=>{
@@ -136,13 +144,15 @@ function initMap(){
       let placeDos=busquedaDestino.getPlace();
 
       marcadorB.setPosition(placeDos.geometry.location)
-      marcadorB.setVisible(true)
       if(placeDos.geometry.viewport){
         mapa.fitBounds(placeDos.geometry.viewport)
         mapa.setZoom(13)
+        marcadorB.setVisible(true)
       }
     })
 
+
+     
     let destinoOrigen=""
     let destinoFinal=""
 
@@ -169,26 +179,49 @@ function initMap(){
     })
 
     function cacularRuta(){
-      const request={
+      let request={
         origin: destinoOrigen,
         destination: destinoFinal, 
         travelMode: 'DRIVING'
   
       }
-  
-      directionsService.route(request, function(result, status){
-        if(status=="OK"){
-          marcador.setVisible(false)
-          marcadorB.setVisible(false)
-          directionsRenderer.setMap(mapa);
-          directionsRenderer.setDirections(result)
-        }else{
-          console.error("error al trazar la ruta: " + status)
+
+      botonIntercambio.addEventListener("click", ()=>{
+        let destinoCambioA=""
+        let destinoCambioB=""
+
+        destinoCambioA+=destinoOrigen
+        destinoCambioB+=destinoFinal
+
+        destinoOrigen=destinoCambioB
+        destinoFinal=destinoCambioA
+
+        request={
+          origin:destinoOrigen,
+          destination:destinoFinal,
+          travelMode:'DRIVING'
         }
+
+        ruta()
       })
 
-    }
+      function ruta(){
+        directionsService.route(request, function(result, status){
 
+          console.log(result)
+          if(status=="OK"){
+            marcador.setVisible(false)
+            marcadorB.setVisible(false)
+            directionsRenderer.setMap(mapa);
+            directionsRenderer.setDirections(result)
+          }else{
+            console.error("error al trazar la ruta: " + status)
+          }
+        })
+
+      }
+      ruta()
+    }
 
 
   });
@@ -434,6 +467,45 @@ function oprimirCiudad(){
     contenedorParadas.style.display="grid"
 
   })
+
+  initMap.nuevoEvento= function(){
+
+
+    inputInfoC.addEventListener("click", ()=>{
+
+
+      const marcadorC= new google.maps.Marker({
+        map:initMap.mapa,
+        icon: {
+          url: 'punto_b.png',
+          scaledSize: new google.maps.Size(30, 38),
+    
+        }
+      });
+
+      let autocompleteDestinoC= inputInfoC;
+
+      const busquedaDestinoC=new google.maps.places.Autocomplete(autocompleteDestinoC);
+      // busquedaDestinoC.bindTo("bounds", mapa);
+
+      // busquedaDestinoC.addListener("place_changed", ()=>{
+      //   marcadorC.setVisible(false)
+
+      //   let placeTres=busquedaDestinoC.getPlace();
+    
+      //   marcadorC.setPosition(placeTres.geometry.location)
+      //   if(placeTres.geometry.viewport){
+      //     initMap.mapa.fitBounds(placeTres.geometry.viewport)
+      //     initMap.mapa.setZoom(13)
+      //     marcadorC.setVisible(true)
+      //     }
+      // })
+  
+
+    });
+  }
+  initMap.nuevoEvento()
+
 }
 
 function puntos(){
@@ -447,11 +519,13 @@ puntos()
 
 let sobre=document.querySelector(".paquete")
 let sobreImg=document.querySelector(".sobreImg")
+let sobreSvg=document.querySelector(".sobreImg")
 
 
 function paquetes(){
   sobre.addEventListener("click", ()=>{
     sobre.classList.toggle("paquetejs")
+    sobreSvg.classList.toggle("sobreSvgDos")
 
   })
 }

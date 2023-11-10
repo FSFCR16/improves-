@@ -362,4 +362,3 @@ function humanReadable(seconds) {
 // }
 // zeros(30)
 
-console.log(Math.pow(2.6525285981219103, 32 ))

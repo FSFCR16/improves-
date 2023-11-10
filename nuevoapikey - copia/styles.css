@@ -431,6 +431,10 @@ option:hover{
   margin-bottom: 15px;
   font-family: "regular";
 }
+
+.sobreSvgDos{
+  fill: white ;
+}
 /*api*/
 #apikey {
   height: 100%;
