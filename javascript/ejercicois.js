@@ -342,4 +342,24 @@ function humanReadable(seconds) {
     
   }
 
-digPow(46288, 3)
+
+// function zeros (n) {
+//     let numeroFinal=1
+//     let cantCeros=0
+//     n==0? cantCeros = "0+": cantCeros
+//     for (let i = 1; i<=n; i++){
+//         numeroFinal*=i
+//         if(i==n){
+//             numeroFinal=Number.prototype.toFixed(numeroFinal).toString().split("")
+//             for(let j= 0; j<numeroFinal.length; j++){
+//                 if (numeroFinal[j]=="0"){
+//                     cantCeros+=1
+//                 }
+//             }
+//         }
+//     }
+//     console.log(cantCeros) 
+// }
+// zeros(30)
+
+console.log(Math.pow(2.6525285981219103, 32 ))
