@@ -30,35 +30,166 @@ let ubicacion= new Localizacion()
 function initMap(){
 
   const ubicacion= new Localizacion(()=>{
-
+    const geocode= new google.maps.Geocoder()
     const latLong={lat: ubicacion.latitud, lng: ubicacion.longitud}
+    const directionsService = new google.maps.DirectionsService();
+    const directionsRenderer = new google.maps.DirectionsRenderer();
 
-    let texto= "<h1> Nombre del lugar </h1>" + "<p> Descripcion del lugar <p>" + "<a href='#'>Pagina Web</a>"
-
-
+    /*geocodificacion*/
+    /*opciones del marcador*/
 
     const options = {
       center: latLong,
       zoom: 14
     }
 
+    let iconBase= "https://maps.google.com/mapfiles/kml/shapes/"
+
+    /*creacion del mapa*/
+
     let map=document.getElementById("map");
 
     const mapa =new google.maps.Map(map, options)
 
+    /* creacion del marcador */
+
     const marcador= new google.maps.Marker({
-      position: latLong,
       map:mapa,
-      title:"Mi primer marcador"
+      icon: {
+        url: 'punto_a.png',
+        scaledSize: new google.maps.Size(30, 38),
+
+      }
     })
 
+    const marcadorB= new google.maps.Marker({
+      map:mapa,
+      icon: {
+        url: 'punto_b.png',
+        scaledSize: new google.maps.Size(30, 38),
+
+      }
+    })
+
+    /* creacion de la ventana de informacion*/
+
     let informacion =new google.maps.InfoWindow({
-      content: texto
+    })
+    let informacionB =new google.maps.InfoWindow({
     })
 
     marcador.addListener("click", ()=>{
       informacion.open(mapa,marcador)
     })
+
+    let autocomplete= inputInfoA
+    let autocompleteDestino= inputInfoB
+
+    /* creacion de constantes para autocompletar*/
+
+    const busqueda= new google.maps.places.Autocomplete(autocomplete)
+    busqueda.bindTo("bounds", mapa);
+
+    const busquedaDestino= new google.maps.places.Autocomplete(autocompleteDestino)
+    busquedaDestino.bindTo("bounds", mapa);
+
+    
+    /* poner informacion en el mapa marcadorA*/
+
+    busqueda.addListener("place_changed", ()=>{
+
+      informacion.close()
+      informacionB.close()
+      marcador.setVisible(false)
+      marcadorB.setVisible(false)
+
+      let place= busqueda.getPlace();
+
+      if(!place.geometry.viewport){
+        window.alert("error al mostrar el lugar")
+      }
+      if(place.geometry.viewport){
+        mapa.fitBounds(place.geometry.viewport)
+      }else{
+        mapa.setCenter(place.geometry.location)
+
+      }
+
+      marcador.setPosition(place.geometry.location)
+      marcador.setVisible(true)
+
+      let address="";
+      if (place.address_components){
+        address=[
+          (place.address_components[0] && place.address_components[0].long_name || ''),
+          (place.address_components[1] && place.address_components[1].long_name || ''),
+          (place.address_components[2] && place.address_components[2].long_name || ''),
+        ];
+
+        informacion.setContent('<section><strong>'+ place.name +'</strong><br>'+ address+ '</section>')
+        informacion.open(mapa, marcador)
+      }
+      /* poner informacion en el mapa marcadorB*/
+    })
+    busquedaDestino.addListener("place_changed", ()=>{
+
+      let placeDos=busquedaDestino.getPlace();
+
+      marcadorB.setPosition(placeDos.geometry.location)
+      marcadorB.setVisible(true)
+      if(placeDos.geometry.viewport){
+        mapa.fitBounds(placeDos.geometry.viewport)
+        mapa.setZoom(13)
+      }
+    })
+
+    let destinoOrigen=""
+    let destinoFinal=""
+
+    busqueda.addListener('place_changed', ()=>{
+      
+      const placeRuta=busqueda.getPlace();
+       if(!placeRuta.geometry){
+        console.log("la direccion no tiene coordenadas validas");
+        return;
+      }
+
+      destinoOrigen= placeRuta.formatted_address
+    })
+
+    busquedaDestino.addListener('place_changed', ()=>{
+
+      const placeRutaDos=busquedaDestino.getPlace();
+      if(!placeRutaDos.geometry){
+        console.log("la direccion no tiene coordenadas validas");
+        return;
+      }
+      destinoFinal= placeRutaDos.formatted_address
+      cacularRuta()
+    })
+
+    function cacularRuta(){
+      const request={
+        origin: destinoOrigen,
+        destination: destinoFinal, 
+        travelMode: 'DRIVING'
+  
+      }
+  
+      directionsService.route(request, function(result, status){
+        if(status=="OK"){
+          marcador.setVisible(false)
+          marcadorB.setVisible(false)
+          directionsRenderer.setMap(mapa);
+          directionsRenderer.setDirections(result)
+        }else{
+          console.error("error al trazar la ruta: " + status)
+        }
+      })
+
+    }
+
+
 
   });
 
