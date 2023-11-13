@@ -70,6 +70,8 @@ function initMap(){
 
     })
 
+
+
     /* creacion del marcador */
 
     const marcador= new google.maps.Marker({
@@ -112,6 +114,78 @@ function initMap(){
     const busquedaDestino= new google.maps.places.Autocomplete(autocompleteDestino)
     busquedaDestino.bindTo("bounds", mapa);
 
+    /*Distancia Tiempo*/
+    let valor1=""
+    let valor2=""
+    function DistanciaTiempo(){
+      busqueda.addListener("place_changed", ()=>{
+        valor1=inputInfoA.value
+      })
+      busquedaDestino.addListener("place_changed", ()=>{
+        valor2=inputInfoB.value
+        calcularDistaciaTiempo()
+      })
+    }
+    DistanciaTiempo()
+
+    function calcularDistaciaTiempo(){
+      let service = new google.maps.DistanceMatrixService();
+      service.getDistanceMatrix(
+      {
+        origins: [valor1],
+        destinations: [valor2],
+        travelMode: 'DRIVING',
+        avoidHighways: true,
+        avoidTolls: true,
+      }, callback);
+
+      botonIntercambio.addEventListener("click", ()=>{
+        let destinoCalculadoA=""
+        let destinoCalculadoB=""
+
+        destinoCalculadoA+=valor1
+        destinoCalculadoB+=valor2
+
+        valor1=destinoCalculadoB
+        valor2=destinoCalculadoA
+
+        service.getDistanceMatrix(
+          {
+            origins: [valor1],
+            destinations: [valor2],
+            travelMode: 'DRIVING',
+            avoidHighways: true,
+            avoidTolls: true,
+          }, callback);
+
+          callback()
+      });
+
+      function callback(response, status) {
+        if (status =="OK"){
+          let origin=response.originAddresses;
+          let destinations = response.destinationAddresses;
+
+          for (let i =0; i < origin.length; i++){
+            let results=response.rows[i].elements;
+
+            for (let j =0; j<results.length;j++ ){
+              
+              let element=results[j]
+              let distancia=element.distance.text
+              let duracion=element.duration.text
+              let from = origin[i];
+              let to = destinations[j];
+
+              console.log(distancia)
+              console.log(duracion)
+              
+            }
+          }
+        }
+      }
+    }
+        
     
     /* poner informacion en el mapa marcadorA*/
 
@@ -152,7 +226,6 @@ function initMap(){
     })
 
 
-     
     let destinoOrigen=""
     let destinoFinal=""
 
@@ -207,15 +280,15 @@ function initMap(){
 
       function ruta(){
         directionsService.route(request, function(result, status){
-
-          console.log(result)
           if(status=="OK"){
             marcador.setVisible(false)
             marcadorB.setVisible(false)
             directionsRenderer.setMap(mapa);
             directionsRenderer.setDirections(result)
           }else{
-            console.error("error al trazar la ruta: " + status)
+            alert("error al trazar la ruta: " + status + " Posible error, no se escribio la ruta a")
+            inputInfoB.value=""
+            destinoFinal=""
           }
         })
 
@@ -227,7 +300,6 @@ function initMap(){
   });
 
 }
-
 
 function deleteMarkers(markersArray) {
   for (let i = 0; i < markersArray.length; i++) {
@@ -468,43 +540,44 @@ function oprimirCiudad(){
 
   })
 
-  initMap.nuevoEvento= function(){
+  // initMap.nuevoEvento= function(mapa){
 
 
-    inputInfoC.addEventListener("click", ()=>{
+  //   inputInfoC.addEventListener("click", ()=>{
 
 
-      const marcadorC= new google.maps.Marker({
-        map:initMap.mapa,
-        icon: {
-          url: 'punto_b.png',
-          scaledSize: new google.maps.Size(30, 38),
+  //     const marcadorC= new google.maps.Marker({
+  //       map:initMap.mapa,
+  //       icon: {
+  //         url: 'punto_b.png',
+  //         scaledSize: new google.maps.Size(30, 38),
     
-        }
-      });
+  //       }
+  //     });
 
-      let autocompleteDestinoC= inputInfoC;
+  //     let autocompleteDestinoC= inputInfoC;
 
-      const busquedaDestinoC=new google.maps.places.Autocomplete(autocompleteDestinoC);
-      // busquedaDestinoC.bindTo("bounds", mapa);
+  //     const busquedaDestinoC=new google.maps.places.Autocomplete(autocompleteDestinoC);
 
-      // busquedaDestinoC.addListener("place_changed", ()=>{
-      //   marcadorC.setVisible(false)
 
-      //   let placeTres=busquedaDestinoC.getPlace();
+
+  // //     // busquedaDestinoC.addListener("place_changed", ()=>{
+  // //     //   marcadorC.setVisible(false)
+
+  // //     //   let placeTres=busquedaDestinoC.getPlace();
     
-      //   marcadorC.setPosition(placeTres.geometry.location)
-      //   if(placeTres.geometry.viewport){
-      //     initMap.mapa.fitBounds(placeTres.geometry.viewport)
-      //     initMap.mapa.setZoom(13)
-      //     marcadorC.setVisible(true)
-      //     }
-      // })
+  // //     //   marcadorC.setPosition(placeTres.geometry.location)
+  // //     //   if(placeTres.geometry.viewport){
+  // //     //     initMap.mapa.fitBounds(placeTres.geometry.viewport)
+  // //     //     initMap.mapa.setZoom(13)
+  // //     //     marcadorC.setVisible(true)
+  // //     //     }
+  // //     // })
   
 
-    });
-  }
-  initMap.nuevoEvento()
+  //   });
+  // }
+  // initMap.nuevoEvento()
 
 }
 
@@ -515,19 +588,19 @@ function puntos(){
 }
 puntos()
 
-//codigo para la zona de paquetes
+// //codigo para la zona de paquetes
 
-let sobre=document.querySelector(".paquete")
-let sobreImg=document.querySelector(".sobreImg")
-let sobreSvg=document.querySelector(".sobreImg")
+// let sobre=document.querySelector(".paquete")
+// let sobreImg=document.querySelector(".sobreImg")
+// let sobreSvg=document.querySelector(".sobreImg")
 
 
-function paquetes(){
-  sobre.addEventListener("click", ()=>{
-    sobre.classList.toggle("paquetejs")
-    sobreSvg.classList.toggle("sobreSvgDos")
+// function paquetes(){
+//   sobre.addEventListener("click", ()=>{
+//     sobre.classList.toggle("paquetejs")
+//     sobreSvg.classList.toggle("sobreSvgDos")
 
-  })
-}
-paquetes()
+//   })
+// }
+// paquetes()
 
