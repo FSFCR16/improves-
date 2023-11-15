@@ -154,7 +154,7 @@ let fechaShort=new Intl.DateTimeFormat("es-ES", {
     dateStyle: "short"
 
 })
-console.log(fechaShort.format(new Date()))
+console.log(fechaShort.format(new Date()), "line 157")
 
 //Propieda day
 

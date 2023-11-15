@@ -113,7 +113,7 @@ console.log("Arrays")
 
 //Filter--- Devuelve un array con la funcion indicada por parametro, o sea en otras palabras devulve un array con el filtro que le pongas a la funcion
 
-let arr=["manzana", "kiwi", "palatano", "pera"]
+let arr=["manzana", "kiwi", "palatano", "pera", "kiwi"]
 console.log(arr.filter((x)=>{
     return x.length>4
 }))
@@ -122,3 +122,102 @@ console.log(arr.filter((x)=>{
 // join--- Devuleve un string uniendolo con un separador que le pasemos por parametro
 
 console.log(arr.join(" - "))
+
+// indexOf devuelve la primera posicon en la que aparezca el valor prorporcionado por parametro, si el resultado de la busqueda fue erroneo devolvera -1
+// tiene un segundo parametro opcional el cual indica desde que elemento se debe empezar a buscar
+
+console.log(arr.indexOf("kiwi"))
+console.log(arr.indexOf("kiwi", 2)) // como el string kiwi esta en la posicoin 1 y le estamos diciendo que empiece a buscar desde la posicion 2 el resultado sera erroneo asi que devolvera -1
+
+// lastIndexOf-- este hace lo contrasrio que indexOf busca desde lo ultimo hasta el principio por ende este devulve el ultimo elemento que tenga lo indicado por parametro
+
+console.log(arr.lastIndexOf("kiwi")) // en este caso devolvera 4 ya que el ultimo elemento con la palabra kiwi se encuentra en la posicon numero 4
+
+// Metodo map-- este devulve los un resultado tras haber sido tratados los elementos con la funcion enviada por parametro, este metodo tambien es tomado como un foreach o sea para recorrer arrays
+
+let newArray=[2,3,4,5,6,2]
+
+console.log(newArray.map(function(x){
+    return x*x
+}))
+
+console.log(newArray.map(function(x){
+    return x==2? x : ""
+}))
+
+// metodo pop-- Este metodo sirve para eliminar el ultimo elemento del array
+
+console.log(arr.pop())
+console.log(arr)
+
+
+// metodo push-- el metodo push sirve para añadir un elemento al final de la lista
+
+arr.push("kiwi", "guayaba")
+console.log(arr)
+
+
+// metodo reverse-- sirve para darle un orden inverso a la lista
+
+arr.reverse()
+newArray.reverse()
+console.log(arr)
+console.log(newArray)
+
+// metodo reduce-- sirve para reducir un array a un solo valor, recibe dos parametros un acumuladro y elemento, auanque puede recibir 4 los otros dos son el indice
+// desde el cual se desea empezar y el array, lo que sucede es que lo que pongamos en el acumulador se va ir valga la redundacia, el elemento se va ir acumulando en el acumulador
+
+const numbers = [12, 5, 8, 24, 3];
+
+const maxNumber = numbers.reduce(function(acumulador, elemento) {
+  return Math.max(acumulador, elemento);
+}, -Infinity);
+
+console.log(maxNumber); // Resultado: 24
+
+//En este ejemplo estamos usando el reduce para hallar el numero mayor en ese array, el proceso seria que se comienza desde -infinity para asegurar que todo numero en el array sea menor 
+//que el valor inicial, despues lo que se hace es ejecutar el math max, entonces;
+// acumulador: -infinity , elemento : 12
+// acumulador: 12, elemento: 5
+// acumulador: 12 , elemento 5 // aqui no cambia ya que le estamos diciendo que verifique entre los dos cual es mayor y el mayor se pasa al acumulador
+// acumulador: 12 , elemento: 8
+// acumulador: 12, elemento :24
+// acumulador: 24 , elemento; 3
+// acumulador: 24
+
+
+
+// metodo shift-- elimina el primer elemento del Array
+
+console.log(arr.shift())
+console.log(arr)
+
+// metodo sort-- este metodo sirve para ordenar el array pero este metodo transforma el array en un string y lo ordena por valor unicode
+// es decir:
+
+let ordenarArr=[2,3,400,200,1,2,3,5]
+console.log(ordenarArr.sort())
+
+// si deseas ordenar los numeros sin que pase esto, toca mandar una funcion que nos permite hacer esto 
+
+console.log(ordenarArr.sort((a,b)=>{return a-b}))// que sucede aqui se compara a con b, al compararlos realizamos una resta, si el resultado es positivo 
+// quiere decir que a es mayor que b ya que siempre se pone el signo del mayor si se suma, si el resultado es negativo b sera mayor y por ultimo
+//si es 0 los dos se tomara como iguales
+
+
+// metodo slice-- este metodo al igual que los strings devuelve un algo comprendido desde el indice dado en el primer elemento y con la longitud dada por el segundo parametro
+
+let aArr=[2,3,4,223,5,4,7]
+console.log(aArr.slice(0,3))
+
+// metodo splice-- este metodo al igual que los strings devuelve un algo comprendido desde el indice dado en el primer elemento y con la longitud dada por el segundo parametro
+//la diferencia entre el slice es que el slice elimina los elementos que sobran, otra diferencia es que tiene un 3 parametro que le podemos que seria un elemento a agragar en la posicion dada en el primer parametro
+aArr=[2,3,4,223,5,4,7]
+console.log(aArr.splice(0,4))
+aArr.splice(2,0,"santiago")
+console.log(aArr)
+
+// metodo unshift-- este metodo sirve para añadir un elementos al principio de la lista, varios
+
+arr.unshift("hola", 3)
+console.log(arr)

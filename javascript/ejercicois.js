@@ -362,3 +362,26 @@ function humanReadable(seconds) {
 // }
 // zeros(30)
 
+function ipsBetween(start, end){
+
+    let arrayStart=start.split(".")
+    let arrayEnd=end.split(".")
+    let arrayFind=[]
+
+    for (let i = 0, j=0; i < arrayStart.length; i++){
+        arrayFind.push(arrayStart[i]-arrayEnd[i])
+        if (arrayFind.length==4){
+            
+            for (let j = 0; j < arrayFind.length; j++, i--){
+
+                arrayFind[j]=arrayFind[j]*(Math.pow(256, i))
+
+            }
+        }
+    }
+    console.log(Math.abs(arrayFind.slice(0,4).reduce((acumulador, elemento)=>{
+        return acumulador+elemento
+    })))
+    
+}
+ipsBetween("20.0.0.10", "20.0.1.0")
