@@ -221,3 +221,130 @@ console.log(aArr)
 
 arr.unshift("hola", 3)
 console.log(arr)
+
+//Como ya vimos se puede crear un array de dos formas #1 usando en el objeto array, #2 encerrando elementos entre corchetes y separandolos por ","
+// ahora para acceder a esos elementos lo que haremos es usar el nombre del array y poniendo la posicion en la que encuentra en el elemento
+// teniendo en cuenta que de izquierda a derecha los elementos empiezan desde el 0 hasta n y que si queremos ir de derecha a izquierda ya que el primero es el 0
+// de derecha a izquierda comenzamos desde el -1
+
+let ar=[2,3,4,23,43,56,7,98]
+console.log(ar[4]) // si contamos desde el 0 de izquieda a derecha nos damos cuenta que el elemnto en la posicion 4 es el 43 entonces por eso devuelve el 43
+
+// Los datos strings tambien son considerados arrays internamente asi tambien podemos tratarlos como uno, accediendo a un indice de la misma forma que lo hariamos con array 
+
+//------------------------------------
+
+
+// inserccion de elementos, para insertar un nuevo elemento podemos hacerlo atraves del metodo push o por medio del indice
+
+ar.push("5434") /* o  */ 
+console.log(ar)
+ar[9]="2121"
+console.log(ar)
+
+//de esta misma forma podemos modificar un elemento
+
+ar[0]="3232"
+console.log(ar)
+
+//eleminar elementos de un array hay tres formas pero si quieres un elemento en concreto hay dos
+// delete y el metodo splice
+delete(ar[1])//en realidad no lo borra solo deja el espacio vacio pero conserva el espacio en memoria
+console.log(ar)
+
+// splice
+ let arra=[2,34,54,23,43,1]
+ arra.splice(2,1)
+ console.log(arra)
+
+
+ console.log()
+ console.log()
+ console.log()
+ console.log()
+ console.log()
+ console.log()
+ console.log()
+console.log("JSON")
+
+
+ //JSON Javascript Object Notation
+
+ //Tipos de datos que acepta un json
+
+
+//  #1 valores numericos, con el punto como seprador decimal
+//  #2 cadenas de texto entrecomilladas
+//  #3 boleanos
+//  #4 valores nulos
+//  #5 arrays que sulen contener otros json
+
+// creacion de json, la forma mas frecuente de crear un json es atraves de dos llaves
+
+//declaracion de un json con datos de una persona
+
+const perosna= {
+    name:"Santiago",
+    lastName: "Fajardo",
+    estatura: 1.74,
+    age: 19,
+    trabaja: false
+}
+
+//Tambien podemos crear uno atraves de su construtor
+
+let personaDos= JSON.constructor();
+
+personaDos.name = "Santiago"
+personaDos.lastName= "Gutierrez"
+personaDos.age= 21
+personaDos.estatura= 1.87,
+personaDos.trabaja= true
+
+console.log(personaDos)
+console.log(perosna)
+
+//Accerder a sus prpiedades podemos hacerlo atraves del formato array o formato objeto
+
+console.log(personaDos.age)
+console.log(perosna["lastName"])
+console.log(perosna.trabaja)
+
+//insercion de elemntos a json
+
+// para alamacenar una propiedad tambien podemos hacerlo en formato objeto o Array
+
+perosna.talla="s"
+perosna["lastName"]="David"
+console.log(perosna)
+
+//Eliminacion de elementos de json 
+
+// para eso podemos usar la funcion delete
+
+delete(perosna.talla)
+console.log(perosna)
+
+// Los datos json sirven bastante la recepcion y envio de datos, es por esto que se utilizan para mandar informacion al servidor o consumir informacion de APIS
+//pero para esto lo mejor es que sea manejada en string para facilitar su manipulacion ya sea enviando o recibiendo la informacion
+//para esto recurrimos a dos metodos el Stringify o perse 
+
+//Stringify 
+
+// este metodo convierte un objeto analizable en una cadena de texto de tipo JSON
+
+let objeto= {
+    texto:"valor",
+    digito: 2
+
+}
+
+console.log(JSON.stringify(objeto))
+
+//El metodo parse, sirve para transformar una cadena de texto de tipo json en un objeto analizable por javascript
+
+let cadena='{"texto": "valor", "digito": 1}';
+let objetoParse=JSON.parse(cadena)
+console.log(objetoParse)
+
+console.log(objetoParse.texto)
