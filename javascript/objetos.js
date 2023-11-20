@@ -346,5 +346,122 @@ console.log(JSON.stringify(objeto))
 let cadena='{"texto": "valor", "digito": 1}';
 let objetoParse=JSON.parse(cadena)
 console.log(objetoParse)
-
 console.log(objetoParse.texto)
+
+//OBJETOS ESPECIALES
+// En javascript se le llaman objetos especiales a los objetos que tienen una funcionalidad concreta o son vinculo u enlace de otro
+
+//Objeto WINDOW
+// el objeto window hace referencia a la ventanada del navegador, este objeto contiene un objeto document el cual se refiere al contenido de la pagina web
+// este objeto es unico para cada pestaña del navegador lo que quiere decir que los cambios que le hagas a una pestaña no se vera reflejado en otras
+
+//Metodos
+// Muchos de los metodos que utilizamos normalmente pertenecen a el sin embargo aunque pertenezca no es necesario que los usemos atraves de el, ejemplo "console"
+
+// propiedades
+console.log()
+console.log()
+console.log()
+console.log()
+console.log()
+console.log()
+
+
+// Propiedad console
+
+// propiedad console permite mandar mensajes a la consola del navegador, en el caso de que estes usando la consola del navegador en node js es "diferente"
+//sirve mucho tambien para depuracion del codigo
+// ejemplos:
+console.log() //Es un console sin un mensaje de estador, arrojando el resultado del codigo
+console.warn() //Este console nos sirve para dar una advertencia
+console.error() //Este console nos sirve de error
+console.assert("x"===10, "x no es igual a 10") // Este sirve para realizar afirmaciones simples con el codigo
+// si es falso arroja un mensaje de error dependiendo de lo quye pasemos como segundo parametro
+
+//Porpiedad document 
+//Esta propiedad hace proporciona informacion detallada y acceso al objeto que hace referencia al documento actual
+
+//Propiedad history 
+// Permite navegar en el historial del navegador con 3 metodos que tiene 
+// back() este mueve la vnetana actual a una pagina hacia atras en el historial 
+// forward() este mueve la ventana actual en el historial si una pagian siguiente disponible
+// go()permite navegar a una pagina especifica en el navegardor, en le parametro le puedes indicar cuantas, negativos para atras positvos hacia adelante
+
+window.history.back()
+window.history.forward()
+window.history.go(-4)
+
+
+//Propiedad innerHeigth innerWidth
+//Estas prpiedades sirve para saber el ancho y alto de la pantalla en px 
+console.log(window.innerHeight)
+console.log(window.innerWidth)
+
+//length En el contexto de las ventanas, esta propiedad sirve para decir cuantos frames hay dento de la ventana
+console.log(window.frames.length)
+
+// Propiedad localStorage 
+//Esta prpiedad nos ayuda a guardar informacion de forma persisitente aunque la venta se cierre o se reinicie
+//se puede eliminar esta informacion manuealmente atra ves de configuraciones del navegador 
+//o cuando se realiza una limpieza de cache
+
+localStorage.setItem("Name", "Santiago")
+localStorage.setItem("Age", 18)
+
+const nombre= localStorage.getItem("Name")
+const edad= localStorage.getItem("Age")
+
+console.log(nombre)
+console.log(edad)
+
+//OuterHeigth y OuterWidth
+//Devuelve el ancho y alto de una pestaña incluyendo todo, todo lo que haya
+
+console.log(window.outerHeight, window.outerWidth)
+
+//sesionStorage
+//Provee acceso para gestionar la informacion temporal que seran eliminados cuando se cierre la pestaña navegador
+//Esta propiedad es muy similar a la localStorage solo que esta tiene un limite de vida util y es cuando se cierre el navegador
+//en cambio localstorage persite aunque esto pase
+
+console.log()
+console.log()
+console.log()
+console.log()
+console.log()
+console.log("Objeto Document")
+
+// Popiedad all esta devulve un htmlCollection similar a un array pero con la informacion de todas las etiquetas que hay en el DOM del documento
+
+console.log(document.all)
+
+//document.activeElement
+//Esra propiedad nos dice cual elemento esta enfocado actualmente, nos es util si digamos queremos
+// que en el momento que algun elemento de nuetsra pagina este enfocado haga alguna accion
+
+document.addEventListener("click", ()=>{
+    const elemntoEnfocado= document.activeElement
+    elemntoEnfocado.style.background= "rgb(97, 143, 244)"
+    console.log("elemento enfocado: ", elemntoEnfocado.tagName)
+})
+
+//Propiedad cookie
+// Devuleve una lista con los nombres de las cookies que esatn asignadas o utiliza el documento
+console.log(document.cookie)
+
+// ¿que es una cookie o cookies?, las cookies son informacion que se envia al servidor cada vez que un usuario entra a nuestra pagina web
+// aqui podemos almacenar informacion como ejemplo tenemps un carito en nuestra pagina web pues podemos almacenar la innfor del carrito en las cookies, o sea como informacion de la sesion o recordar info del usuario
+//tambien las podemos usar para personalizar y hacer un seguimiento o sea recordando preferencias especificas del usuario asi recomendando cosas basado en eso
+// y asi mejorar la experiencia
+
+
+//desingMode
+//Esta propiedad lo que hace es que todo lo que  antes era un label o h1 sea editable, nos permite que la pagina sea editable por decirlo de alguna manera
+document.designMode= "off"
+//lo malo es que vuelve todo el documento editable si se desea solo ciertas cosas que seas editables se toca realizar otras tecnicas como
+
+// <div contenteditable="true">
+//  santiago fajardo
+// </div>
+
+// aqui solo podras editar el div
