@@ -1,4 +1,12 @@
 // Tipos de objetos
+var xhr = new XMLHttpRequest();
+
+xhr.onreadystatechange = function() {
+  console.log('Estado actual:', xhr.readyState);
+};
+
+xhr.open('GET', 'http://127.0.0.1:5502/javascript/html_objetos.html', true);
+xhr.send();
 
 // Predefinidos: estos son los que proporciona el lenguaje puede ser el objeto, Date para la gestion de flechaRastreo, el objeto Math para realizar operaciones o 
 // el objeto RegExp par atrabajar con expresiones regulares
@@ -450,7 +458,7 @@ document.addEventListener("click", ()=>{
 console.log(document.cookie)
 
 // ¿que es una cookie o cookies?, las cookies son informacion que se envia al servidor cada vez que un usuario entra a nuestra pagina web
-// aqui podemos almacenar informacion como ejemplo tenemps un carito en nuestra pagina web pues podemos almacenar la innfor del carrito en las cookies, o sea como informacion de la sesion o recordar info del usuario
+// aqui podemos almacenar informacion como ejemplo tenemps un carito en nuestra pagina web pues podemos almacenar la info del carrito en las cookies, o sea como informacion de la sesion o recordar info del usuario
 //tambien las podemos usar para personalizar y hacer un seguimiento o sea recordando preferencias especificas del usuario asi recomendando cosas basado en eso
 // y asi mejorar la experiencia
 
@@ -464,4 +472,84 @@ document.designMode= "off"
 //  santiago fajardo
 // </div>
 
-// aqui solo podras editar el div
+// aqui solo podras editar el di
+
+
+// En siguiente ejemplo vamos a usar dos metodos readyState y onreadystatechange
+// reasyState nos sirve para saber en que estado se encuentra el documento, este pasa por 5 fases, unsent, opened, loading, interective y complete
+// Tipos de objetos
+var xhr = new XMLHttpRequest();
+
+xhr.onreadystatechange = function() {
+  console.log('Estado actual:', xhr.readyState);
+};
+
+xhr.open('GET', 'http://127.0.0.1:5502/javascript/html_objetos.html', true);
+xhr.send();
+
+//Interfaz Navigator
+// esta inferfaz es un objeto que contiene informacion sobre le agente usuario, la informacion sobre la identidad del usuario
+// esta interfaz permite consultar, entre otras cosas el lenguaje que esta usando el usuario
+// plataforma, sistema operativo si admite cookies
+
+// Metodo appVersion
+
+// Este nos ayuda a saber cual es la version del navegador esta propiedad tambien puede contener la informacion del sistema operativo
+
+console.log(navigator.appName)
+
+//Propiedad cookieEnable
+//Devuleve un booleano indicando si el navegador tiene las cookies activadas o no
+console.log(navigator.cookieEnabled)
+
+//Propiedad hardwareCurrency
+//Si esta disponible devulve la cantidad de nucleos del procesador
+console.log(navigator.hardwareConcurrency)
+
+console.log(navigator.userAgent)
+
+
+// // Interfaz HTMLElement
+// esta interfaz es la que representa todos los elementos del DOM, hereda todas las propiedades del objeto elemento
+// esta es muy util cuando se desea añadir funcionalidad o sobrecargar metodos ya existentes
+// en otras palabras nos permite entre unas de susu cosas estableces atributos a los elementos del dom
+
+// Propiedades mas usadas:
+
+// Propiedad accessKey
+
+// Esta propiedad nos sirve para enfoncar un elemento y saber cual elemento estamos enfocando si oprimimos una letra, ejemplo
+
+
+// <button accesskey="s">CLICK ME</button> 
+
+// este boton se enfoca si presionamos la letra alt-s
+
+
+
+//Propiedad Attributes
+
+//Esta propiedad nos devuelve todos los atributos que tiene el elemento al cual le demos esta propiedad
+let boton= document.querySelector(".boton")
+console.log(boton.attributes[1])
+
+
+//Aqui muestra los atributos del boton
+
+
+//Propiedad childNodes
+//Devuelve todos nodos hijos del elemento que le indicamos
+let div= document.querySelector(".div")
+console.log(div.childNodes[1])
+//En este caso devulve todos los elementos en un array y yo le indique que solo me devolviera el nodo en la posicion numero 1 pero los devuelve todos
+
+
+
+//Propiedad classNme
+//Sirve para manipular las clases del elemento
+console.log(div.className += " div2") 
+
+//De esta forma yo puedo manipular las clases del elemento que deses
+console.log(boton)
+boton.hidden=false
+

@@ -459,12 +459,36 @@ ipsBetween("20.0.0.10", "20.0.1.0")
 
 function formatDuration(seconds) {
 
-    const dias= Math.floor(seconds/84600)
-    const horas = Math.floor(seconds / 3600);
+    let formato=""
+
+    seconds == 0 ? formato += "now": seconds;
+
+    const años = Math.floor(seconds / 31557600 )
+    años==0? dias: años==1? formato+=`${años} year `: formato+=`${años} years `
+
+    const dias= Math.floor((seconds % 31557600) / 86400)
+    dias==0? dias: dias==1? formato+=`${dias} day `: formato+=`${dias} days `
+
+    const horas = Math.floor((seconds % 86400) / 3600);
+    horas==0? horas: horas==1? formato+=`${horas} hour `: formato+=`${horas} hours `
+
     const minutos = Math.floor((seconds % 3600) / 60);
+    minutos==0? minutos: minutos==1? formato+=`${minutos} minute `: formato+=`${minutos} minutes `
+
     const segundosRestantes = seconds % 60;
-    console.log(dias,horas, minutos, segundosRestantes)
+    segundosRestantes==0? segundosRestantes: segundosRestantes==1? formato+=`${segundosRestantes} second `: formato+=`${segundosRestantes} seconds `
 
+    let arrayFechas=formato.trim().split(" ")
+
+    for(let i = 1 ; i < arrayFechas.length-4; i+=2){
+
+        arrayFechas[i]=arrayFechas[i] + ","
+    }
+    if(arrayFechas.length>2){
+        arrayFechas[arrayFechas.length-2]= "and " + arrayFechas[arrayFechas.length-2]
+        console.log(arrayFechas.join(" "))
+    }else{
+        return arrayFechas.join(" ")
+    }
 }
-
-formatDuration(56000)
+formatDuration(132030240)
