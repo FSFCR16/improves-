@@ -550,6 +550,82 @@ console.log(div.childNodes[1])
 console.log(div.className += " div2") 
 
 //De esta forma yo puedo manipular las clases del elemento que deses
-console.log(boton)
+
 boton.hidden=false
 
+
+//Proiedad name
+// Esta propiedad devuelve el nombre del elemnto pero el elemnto tiene que tener la propiedad name en  el
+console.log(boton.name)
+
+//Propiedad nextsibling 
+//devulve el nodo posterior del elemento que estes pasando, pero algo a tener en cuenta es que esensible 
+// a espacios y saltos de linea o sea que si hay un salto de linea ese sera su nextSibling si quieres le siguiente 
+// elemento que es lo mas probable el que necesitas es nextElementSibling este si te da el elemento posterior
+console.log(boton.nextElementSibling)
+
+
+//Porpiedad outerHTML
+//Esta prpiedad devuleve el contenido del elemento incluyendose asi mismo
+// y te lo devulve tambien con la estrutura HTML
+console.log(div.outerHTML)
+
+//Propiedad ParentNode
+//Esta propiedad devulve el elemento padre del elemento al que lo estemos ultilizando si no tiene devuelve null
+let section= boton.nextElementSibling.childNodes[2]
+
+console.log(section.parentNode)
+
+//Propiedad previosSibling
+//Es lo opuesto a netxSibling
+console.log(div.previousSibling)
+
+//Propieda tabIndex 
+//este define la posicion en la que sera enfocado el elemento apartir del tabulador 
+//si es 0 tiene su posicion natural, -1 no sera enfocado apartir del tabulador 
+
+
+//Propiedad textContent
+//Esta propiedad devuelve el contenido de tipo etxto del elemento
+console.log(div.textContent)
+
+
+//----------------------------------------------------------------
+
+//METODOS MAS ULTILIZADOS
+
+//addEventListener
+//Lo que hace es añadirle un evento a un elemento, no se le puede añadir eventos a varios elementos a la vez
+//Lo que toca hacer es iterar la lista de los elemento de esta forma se le asignara un evento a cada elemento por separado
+
+//boton.addEventListener("tipoDeEveneto", funcion())
+
+
+//Propiedad appendChild
+//Inserta un nodo como iltimo hijo del elemnto
+let text=document.createTextNode("hola Santiago")
+div.appendChild(text)
+
+//Propiedad cloneNode
+//Esta propiedad clona un node, incluyendo su contenido si se desea, esto se lo indicas atrves de un booleano el cual pasas pr parametro
+console.log( div.cloneNode(true))
+
+let html=div.outerHTML
+
+//getAttribiteNode
+//Devuelve un objeto Attribute con la decripcion completa del atributo proporcionado por parametro
+
+console.log(div.getAttributeNode("draggable"))
+
+//hasAttribute
+//DEvuleve un booleano indicando si o no tiene el atributo indicado por parametro
+console.log(div.hasAttribute("hidden"))
+
+
+//Porpiedad insertAdjacentHTML
+//inserta un contenido html en la posiscion que le digamos en el primer parametro
+// no solo tenemos insertAdjacentHTML tambien tenemos insertAdjacentElement y insertAdjacenttext
+
+let elemento=document.querySelector(".p")
+
+elemento.insertAdjacentHTML("afterbegin", html)
