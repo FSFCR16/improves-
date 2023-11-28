@@ -629,3 +629,62 @@ console.log(div.hasAttribute("hidden"))
 let elemento=document.querySelector(".p")
 
 elemento.insertAdjacentHTML("afterbegin", html)
+
+//Porpiedad setAtribute
+// Esta propiedad establece el valor del atributo indicado por parametro al elemnto indicado
+
+div.setAttribute("hidden", "true")
+
+// tambien tenemos la propiedad removeAttribute
+// esta propiedad nos sirve para elminar un atributo el cual le pasamos por parametro del elemento indicado
+div.removeAttribute("hidden")
+
+// Propiedad setAttributeNode esta propiedad se utuliza para crear atributos personalizdos
+
+atributo= document.createAttribute("clave")
+atributo.value= "id-212121"
+div.setAttributeNode(atributo)
+
+// atmbien podemos eliminarlo con la propiedad removeAttributeNode
+
+div.removeAttributeNode(atributo)
+
+
+//METODO PARA EL OBJETO HISTORY 
+//Propiedad pushState
+//Te permite cambiar de pagina a la que le indiques por paramento con los botones de retroceder y de avanzar del navegador
+// pero tambien se lo puedes asignar a un bton com en el ejemplo
+
+// boton.addEventListener("click", ()=>{
+//     const data={someData: 'some value'};
+//     const title= "new page";
+//     const newUrl= "/nueva page"
+
+//     history.pushState(data, title, newUrl)
+
+// })
+
+
+// window.onpopstate = function(e){
+//     console.log(e.state)
+// }
+
+
+//OBJETO THIS
+
+//El onjeto this provee acceso al objeto actual, ya sea funcion u otro objeto, si el objeto this
+// es llamado de forma global hace referencia al objeto window mientras que si se llama desde una funcion o evento hara refencia al propio objeto
+
+function Producto(a, b) {
+    this.p = a * b; // Creamos una propiedad 'p' en el contexto de este objeto
+
+    this.calcularP = function() { // Creamos un método para modificar 'p'
+        this.p = 10; // Modificamos 'p' específicamente en este contexto
+    };
+}
+
+const objetoProducto = new Producto(2, 3);
+console.log("Valor de p inicial:", objetoProducto.p); // Muestra el valor inicial de 'p'
+
+objetoProducto.calcularP(); // Llamamos al método para modificar 'p'
+console.log("Valor de p después de modificar:", objetoProducto.p);
