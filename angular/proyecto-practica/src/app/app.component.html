@@ -1,0 +1,29 @@
+<p>{{taskTitle}}</p>
+
+@if(isAdmin){
+  <button>Erase DataBase</button>
+}@else {
+  <p>No estas autenticado</p>
+}
+<!--
+Al igual que js usamos if como una condicion en este caso si isAdmin es igual a true
+mostrara el boton por otro lado un fellback que dice no estas autenticado y lo hacemos igual que js con el else
+-->
+<ul>
+@for (ingrediente of ingredientList; track ingrediente.name){
+
+  <li>{{ingrediente.quantity}}-{{ingrediente.name}}</li>
+
+}
+</ul>
+<!--Esto es un for of loop de js pero a difencia del for of de js este tiene algo adicional
+y es keyword track.
+Track es una propiedad le permite a angular usarla como una key por eso lo que pongamos en track debe ser algo unico que se encuentra como propiedda de nuestro objeto o lista,
+ya que normalmente uno hace cambios o mueve algo este track le permite a angular hacer el reodenamiento mediante esta key ya que angular 
+la usa para guiarse por asi decrilo que todo sea mostardo de forma correcta-->
+
+<button [disabled]="formsIsInvalid" [attr.data-test-id]="testId"> click me</button>
+<p>{{annnouncement}}</p>
+<button (click)="transformtext()">clcik me </button>
+
+<button (dblclick)="createUser($event)">Submit</button>
