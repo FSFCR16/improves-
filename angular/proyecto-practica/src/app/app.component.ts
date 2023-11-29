@@ -1,15 +1,22 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
+import { CalculatorService } from './calculator.service';
+import { PracticaComponent } from './practica/practica.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet],
+  imports: [CommonModule, RouterOutlet, PracticaComponent],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+
+  private calculatorService = inject(CalculatorService)
+  totalCost = this.calculatorService.add(50,25)
+
+
   taskTitle: string ='Read cup of coffe' 
   //esta es la forma de hacer un contenido dinamico en angular, de forma automatica angular interpola la informacion
   //que esta en la variable y la lleva al html pasando de un html template statico a dinamico
@@ -51,7 +58,7 @@ export class AppComponent {
   //specify what javaScript statement tu quieres correr cuando oprimas el boton ejemplo
   //<button (click)="transfromtext()">clcik me </button>
 
-  //si queremos usar un evento en especifico podriamos hacer los siguiente
+  //si queremos usar interfaces de eventos podriamos hacer los siguiente
   // Inside your component class
   createUser(event: MouseEvent) {
   // Access properties of the event object

@@ -7,6 +7,7 @@ let inputInfoB=document.querySelector(".direccionInB")
 let inputInfoA=document.querySelector(".direccionInA")
 let botonCambio=document.querySelector(".contenedorIntercambio")
 
+
 class Localizacion{
 
   constructor(callback){
@@ -70,8 +71,6 @@ function initMap(){
 
     })
 
-
-
     /* creacion del marcador */
 
     const marcador= new google.maps.Marker({
@@ -79,7 +78,6 @@ function initMap(){
       icon: {
         url: 'punto_a.png',
         scaledSize: new google.maps.Size(30, 38),
-
       }
     })
 

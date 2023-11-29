@@ -688,3 +688,77 @@ console.log("Valor de p inicial:", objetoProducto.p); // Muestra el valor inicia
 
 objetoProducto.calcularP(); // Llamamos al método para modificar 'p'
 console.log("Valor de p después de modificar:", objetoProducto.p);
+
+function producto(a, b){
+    let p = a*b
+    this.p =p
+}
+producto.p = 0
+producto(2,3)
+console.log(producto.p)
+console.log(window.globalThis.p)
+// la razon por la que este codigo devulve 0 en vez de 6 es porque this espera un objeto isntaciado
+// para poder hacer referencia a ese objeto como no hay ninguna instancia this esta haciendo referencia 
+// al objeto global window si en este caso hicieramos un console.log de window.globalThis.p ahi si retornaria 6
+
+// si queremos que el codigo de arriba funcione lo que tenemos que hacer es crear una instancia del objeto producto
+
+const prod= new producto(2,3)
+console.log(prod.p)// listo solucionado
+
+// ahora si digamos lo queriamos era cambiar su valor sin necesidad de instanciar el objeto lo que podemos hacer es cambiar
+// tl this por el nom bre del objeto
+
+function productoc(a, b){
+    let h = a*b
+    productoc.h =h
+}
+productoc.h = 0
+productoc(2,3)
+console.log(productoc.h)
+
+
+//Objeto globalThis
+//el objeto this nos permite manejar el contexto actual dado este caso el objeto globalThis
+//nos permite manejar el objeto global, dicho de otra forma si estamos dentro de una funcion de un objeto
+// que fue declarado bajo el contexto de window el objeto this sera la declaracion del a funcion y globaThis
+//sera un alias del objeto window
+
+
+let it = { name: "it", version: "1.0"}
+it.imprimirContextos =function(){
+    console.log("this", this);
+    console.log("globalThis: ", globalThis)
+}
+it.imprimirContextos()
+//Como ponemos ver aca el this imprime el objeto ya que esta refrenciando al objeto como tal 
+//mientras que globalThis al propio objeto window del documento
+
+
+//Todos lo objetos en javascript provienden del objeto Object, de esta forma todos los objetos geredas sus propiedas y metodos
+//El problema esta cuando queremos añardirles nuevas propiedas y metodos para resolver esto tenemos
+//el objeto prototype el cual nos permite esto añadir metodos y propiedas a los objetos
+
+//Objeto Protoype
+//tiene dos propiedas importantes 
+//constructor: el cual epecifica la funcion que creo el prototipo del objeto
+//isPrototypeOf: indica que prototipo se uso para el objeto
+
+//añadir una propiedad al objeto date
+
+Date.prototype.littleSantiago= function(){
+    let local = new Date(this)
+    console.log(local)
+    console.log(this.getTimezoneOffset())
+    local.setMinutes(this.getMinutes()-this.getTimezoneOffset());
+    console.log(local)
+    let aux = local.toJSON().slice(0,10)
+    console.log(aux)
+    aux= aux.split("-")[2] + "-" +
+         aux.split("-")[1] + "-" +
+         aux.split("-")[0]; 
+
+    return aux
+}
+
+console.log(new Date().littleSantiago());
