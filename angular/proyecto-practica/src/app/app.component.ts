@@ -59,13 +59,17 @@ export class AppComponent {
   //<button (click)="transfromtext()">clcik me </button>
 
   //si queremos usar interfaces de eventos podriamos hacer los siguiente
-  // Inside your component class
   createUser(event: MouseEvent) {
   // Access properties of the event object
     console.log(event.clientX);
     console.log(event.clientY);
   // Perform actions based on the event
   }
+
+  //si el archivo no tiene la carpeta de node_modules lo que haremos 
+  //lo que haremos sera instalas otra vez las depencias de node con 
+  //el comando npm install o npm i
+
 }
 
 
