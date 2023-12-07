@@ -1,0 +1,128 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Akshar', sans-serif;
+    font-family: 'Be Vietnam Pro', sans-serif;
+}
+
+body {
+    height: 95vh;
+    width: 100%;
+    padding: 20px 5px 0px 5px;
+    background-color: black;
+}
+
+
+.container-parent {
+    display: grid;
+    grid-template-columns: 25% 50% 25%;
+    height: 100%;
+}
+
+.aside-izq {
+    display: grid;
+    grid-template-rows: 18% 82%;
+    margin: 10px;
+    row-gap: 8px;
+
+}
+
+#header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: rgb(25, 25, 25);
+    color: aliceblue;
+    border-radius: 8px;
+}
+
+.btn-nav {
+    display: flex;
+    column-gap: 10px;
+    height: 3rem;
+    align-items: center;
+    padding-left: 20px;
+    cursor: pointer;
+    transition: all .2s;
+}
+
+
+.btn-nav:hover {
+    transform: scale(1.03);
+}
+
+
+#biblioteca {
+    display: grid;
+    grid-template-rows: 10% 15% auto;
+    background-color: rgb(25, 25, 25);
+    border-radius: 8px;
+
+}
+
+.barra-1 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 13px;
+}
+
+.sub-barra1 {
+    display: flex;
+    column-gap: 15px;
+    cursor: pointer;
+}
+
+.contint i:hover {
+    transform: scale(1.2);
+}
+
+.contbiblioteca:hover {
+    transform: scale(1.03);
+}
+
+.barra-2 {
+    display: flex;
+    align-items: center;
+    padding: 0 7px;
+    overflow-x: hidden;
+    /* flex-wrap: nowrap; */
+
+}
+
+#btn2 {
+    background-color: rgb(51, 51, 51);
+    color: #ffffff;
+    border-radius: 20px;
+    outline: none;
+    border: none;
+    height: 2rem;
+    width: auto;
+    margin-left: 2px;
+    white-space: nowrap;
+    padding: 0 9px;
+
+}
+
+.contenedor-flechas {
+    position: absolute;
+    height: 2rem;
+    width: 2rem;
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(42, 42, 42);
+    cursor: pointer;
+
+}
+
+.contenedor-flechas:hover {
+    background-color: rgb(78, 78, 78);
+}
+
+
+
+.flecha-derecha {
+    left: 22%;
+}
