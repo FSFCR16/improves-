@@ -457,38 +457,318 @@ function ipsBetween(start, end) {
 }
 ipsBetween("20.0.0.10", "20.0.1.0")
 
-function formatDuration(seconds) {
+// function formatDuration(seconds) {
 
-    let formato=""
+//     let formato=""
 
-    seconds == 0 ? formato += "now": seconds;
+//     seconds == 0 ? formato += "now": seconds;
 
-    const años = Math.floor(seconds / 31557600 )
-    años==0? dias: años==1? formato+=`${años} year `: formato+=`${años} years `
+//     const años = Math.floor(seconds / 31557600 )
+//     años==0? dias: años==1? formato+=`${años} year `: formato+=`${años} years `
 
-    const dias= Math.floor((seconds % 31557600) / 86400)
-    dias==0? dias: dias==1? formato+=`${dias} day `: formato+=`${dias} days `
+//     const dias= Math.floor((seconds % 31557600) / 86400)
+//     dias==0? dias: dias==1? formato+=`${dias} day `: formato+=`${dias} days `
 
-    const horas = Math.floor((seconds % 86400) / 3600);
-    horas==0? horas: horas==1? formato+=`${horas} hour `: formato+=`${horas} hours `
+//     const horas = Math.floor((seconds % 86400) / 3600);
+//     horas==0? horas: horas==1? formato+=`${horas} hour `: formato+=`${horas} hours `
 
-    const minutos = Math.floor((seconds % 3600) / 60);
-    minutos==0? minutos: minutos==1? formato+=`${minutos} minute `: formato+=`${minutos} minutes `
+//     const minutos = Math.floor((seconds % 3600) / 60);
+//     minutos==0? minutos: minutos==1? formato+=`${minutos} minute `: formato+=`${minutos} minutes `
 
-    const segundosRestantes = seconds % 60;
-    segundosRestantes==0? segundosRestantes: segundosRestantes==1? formato+=`${segundosRestantes} second `: formato+=`${segundosRestantes} seconds `
+//     const segundosRestantes = seconds % 60;
+//     segundosRestantes==0? segundosRestantes: segundosRestantes==1? formato+=`${segundosRestantes} second `: formato+=`${segundosRestantes} seconds `
 
-    let arrayFechas=formato.trim().split(" ")
+//     let arrayFechas=formato.trim().split(" ")
 
-    for(let i = 1 ; i < arrayFechas.length-4; i+=2){
+//     for(let i = 1 ; i < arrayFechas.length-4; i+=2){
 
-        arrayFechas[i]=arrayFechas[i] + ","
-    }
-    if(arrayFechas.length>2){
-        arrayFechas[arrayFechas.length-2]= "and " + arrayFechas[arrayFechas.length-2]
-        console.log(arrayFechas.join(" "))
-    }else{
-        return arrayFechas.join(" ")
-    }
+//         arrayFechas[i]=arrayFechas[i] + ","
+//     }
+//     if(arrayFechas.length>2){
+//         arrayFechas[arrayFechas.length-2]= "and " + arrayFechas[arrayFechas.length-2]
+//         console.log(arrayFechas.join(" "))
+//     }else{
+//         return arrayFechas.join(" ")
+//     }
+// }
+// formatDuration(132030240)
+
+// function zero(operador) {
+//     const numero= 0
+//     if (operador !== undefined){
+//         if( operador[0] === "+" ){
+//             return parseInt(numero) + parseInt(operador[2])
+//         }else if(operador[0] === "-" ){
+//             return parseInt(numero) - parseInt(operador[2])
+
+//         }else if(operador[0] === "/" ){
+//             let div=parseInt(numero) / parseInt(operador[2])
+//             if(Math.floor(div) === 0){
+//                 return 0
+//             }
+
+//             return Math.floor(div)
+
+//         }else{
+//             return parseInt(numero) * parseInt(operador[2])
+//         }
+//     }else{
+//         return numero
+//     }
+// }
+// function one(operador ) { 
+//     const numero= 1
+//     if (operador !== undefined){
+//         if( operador[0] === "+" ){
+//             return parseInt(numero) + parseInt(operador[2])
+//         }else if(operador[0] === "-" ){
+//             return parseInt(numero) - parseInt(operador[2])
+
+//         }else if(operador[0] === "/" ){
+//             let div=parseInt(numero) / parseInt(operador[2])
+//             if(Math.floor(div) === 0){
+//                 return 0
+//             }
+
+//             return Math.floor(div)
+
+//         }else{
+//             return parseInt(numero) * parseInt(operador[2])
+//         }
+//     }else{
+//         return numero
+//     }
+// }
+// function two(operador) {
+
+//     const numero= 2
+//     if (operador !== undefined){
+//         if( operador[0] === "+" ){
+//             return parseInt(numero) + parseInt(operador[2])
+//         }else if(operador[0] === "-" ){
+//             return parseInt(numero) - parseInt(operador[2])
+
+//         }else if(operador[0] === "/" ){
+//             let div=parseInt(numero) / parseInt(operador[2])
+
+//             if(Math.floor(div)=== 0){
+//                 return 0
+//             }
+
+//             return Math.floor(div)
+
+//         }else{
+//             return parseInt(numero) * parseInt(operador[2])
+//         }
+//     }else{
+//         return numero
+//     }
+// }
+
+// function three(operador) {
+//     const numero= 3
+
+//     if (operador !== undefined){
+//         if( operador[0] === "+" ){
+//             return parseInt(numero) + parseInt(operador[2])
+//         }else if(operador[0] === "-" ){
+//             return parseInt(numero) - parseInt(operador[2])
+
+//         }else if(operador[0] === "/" ){
+//             let div=parseInt(numero) / parseInt(operador[2])
+//             if(Math.floor(div) === 0){
+//                 return 0
+//             }
+
+//             return Math.floor(div)
+//         }else{
+//             return parseInt(numero) * parseInt(operador[2])
+//         }
+//     }else{
+//         return numero
+//     }
+// }
+// function four(operador) {
+//     const numero= 4
+//     if (operador !== undefined){
+//         if( operador[0] === "+" ){
+//             return parseInt(numero) + parseInt(operador[2])
+//         }else if(operador[0] === "-" ){
+//             return parseInt(numero) - parseInt(operador[2])
+
+//         }else if(operador[0] === "/" ){
+//             let div=parseInt(numero) / parseInt(operador[2])
+//             if(Math.floor(div) === 0){
+//                 return 0
+//             }
+
+//             return Math.floor(div)
+//         }else{
+//             return parseInt(numero) * parseInt(operador[2])
+//         }
+//     }else{
+//         return numero
+//     }
+// }
+// function five(operador) {
+
+//     const numero= 5
+
+//     if (operador !== undefined){
+//         if( operador[0] === "+" ){
+//             return parseInt(numero) + parseInt(operador[2])
+//         }else if(operador[0] === "-" ){
+//             return parseInt(numero) - parseInt(operador[2])
+
+//         }else if(operador[0] === "/" ){
+//             let div=parseInt(numero) / parseInt(operador[2])
+//             if(Math.floor(div) === 0){
+//                 return 0
+//             }
+
+//             return Math.floor(div)
+
+//         }else{
+//             return parseInt(numero) * parseInt(operador[2])
+//         }
+//     }else{
+//         return numero
+//     }
+// }
+// function six(operador) {
+
+//     const numero= 6
+//     if (operador !== undefined){
+//         if( operador[0] === "+" ){
+//             return parseInt(numero) + parseInt(operador[2])
+//         }else if(operador[0] === "-" ){
+//             return parseInt(numero) - parseInt(operador[2])
+
+//         }else if(operador[0] === "/" ){
+//             let div=parseInt(numero) / parseInt(operador[2])
+//             if(Math.floor(div) === 0){
+//                 return 0
+//             }
+
+//             return Math.floor(div)
+
+//         }else{
+//             return parseInt(numero) * parseInt(operador[2])
+//         }
+//     }else{
+//         return numero
+//     }
+// }
+// function seven(operador) {
+//     const numero= 7
+//     if (operador !== undefined){
+//         if( operador[0] === "+" ){
+//             return parseInt(numero) + parseInt(operador[2])
+//         }else if(operador[0] === "-" ){
+//             return parseInt(numero) - parseInt(operador[2])
+
+//         }else if(operador[0] === "/" ){
+//             let div=parseInt(numero) / parseInt(operador[2])
+//             if(Math.floor(div) === 0){
+//                 return 0
+//             }
+
+//             return Math.floor(div)
+
+//         }else{
+//             return parseInt(numero) * parseInt(operador[2])
+//         }
+//     }else{
+//         return numero
+//     }
+// }
+// function eight(operador) {
+//     const numero= 8
+//     if (operador !== undefined){
+//         if( operador[0] === "+" ){
+//             return parseInt(numero) + parseInt(operador[2])
+//         }else if(operador[0] === "-" ){
+//             return parseInt(numero) - parseInt(operador[2])
+
+//         }else if(operador[0] === "/" ){
+//             let div=parseInt(numero) / parseInt(operador[2])
+
+//             if(Math.floor(div) === 0){
+//                 return 0
+//             }
+
+//             return Math.floor(div)
+
+//         }else{
+//             return parseInt(numero) * parseInt(operador[2])
+//         }
+//     }else{
+//         return numero
+//     }
+// }
+// function nine(operador) {
+//     const numero= 9
+//     if (operador !== undefined){
+//         if( operador[0] === "+" ){
+//             return parseInt(numero) + parseInt(operador[2])
+//         }else if(operador[0] === "-" ){
+//             return parseInt(numero) - parseInt(operador[2])
+
+//         }else if(operador[0] === "/" ){
+
+//             let div=parseInt(numero) / parseInt(operador[2])
+//             if(Math.floor(div) === 0){
+//                 return 0
+//             }
+
+//             return Math.floor(div)
+
+//         }else{
+//             return parseInt(numero) * parseInt(operador[2])
+//         }
+//     }else{
+//         return numero
+//     }
+// }
+
+// function plus(num) {
+
+//     return "+" + " " + num
+// }
+// function minus(num) {
+//     return "-" + " " + num
+// }
+// function times(num) {
+//     return "*" + " " + num
+// }
+// function dividedBy(num) {
+
+//     return "/" + " " + num
+// }
+
+
+
+function zero(fn) {return fn ? fn(0) : 0}
+function one(fn) {return fn ? fn(1) : 1}
+function two(fn) {return fn ? fn(2) : 2}
+function three(fn) {
+    console.log(fn) 
+    return fn ? fn(3) : 3
 }
-formatDuration(132030240)
+function four(fn) {return fn ? fn(4) : 4}
+function five(fn) {return fn ? fn(5) : 5}
+function six(fn) {return fn ? fn(6) : 6}
+function seven(fn) {return fn ? fn(7) : 7}
+function eight(fn) { 
+    return fn ? fn(8) : 8
+}
+function nine(fn) {return fn ? fn(9) : 9}
+
+function plus(n) {return function(v) {return v + n}}
+function minus(n) {return function(v) {return v - n}}
+function times(n) {return function(v) {return v * n}}
+function dividedBy(n) {
+    console.log(n)
+    return function(v) {return v / n}}
+
+console.log(eight(dividedBy(three())))
