@@ -762,3 +762,35 @@ Date.prototype.littleSantiago= function(){
 }
 
 console.log(new Date().littleSantiago());
+
+
+//HERENCIA
+
+//Si queremos crear un nuevo objeto desde cero lo primero que debemso crear es su constructor ejemplo
+function Person(nombre, apellido, edad){
+    this.nombre = nombre + " " +apellido ;
+    this.edad= edad || 18;
+
+};
+
+Person.prototype.getedad=function(){
+    console.log(this.nombre + ' tiene ' + this.edad + ' años de edad ')
+}
+let santiago = new Person("santiago", "fajardo sabogal", 19)
+santiago.getedad()
+
+
+function Alumno(persona, curso, asignaturas){
+    console.log(persona)
+    for(let i in persona){
+        this[i]= persona[i]
+    }
+    this.curso =curso;
+    this.asignaturas=asignaturas;
+};
+
+Alumno.prototype =new Person();
+
+console.log(Alumno.constructor)
+santiago = new Alumno(santiago, "universidad", "....")
+console.log(santiago)

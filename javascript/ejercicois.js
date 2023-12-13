@@ -752,7 +752,7 @@ function zero(fn) {return fn ? fn(0) : 0}
 function one(fn) {return fn ? fn(1) : 1}
 function two(fn) {return fn ? fn(2) : 2}
 function three(fn) {
-    console.log(fn) 
+
     return fn ? fn(3) : 3
 }
 function four(fn) {return fn ? fn(4) : 4}
