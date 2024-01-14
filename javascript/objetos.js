@@ -781,16 +781,17 @@ santiago.getedad()
 
 
 function Alumno(persona, curso, asignaturas){
-    console.log(persona)
+
     for(let i in persona){
         this[i]= persona[i]
-    }
+    } // esto nos ayuda a copiar las rpopiedades de la clase person en la clase alumno
     this.curso =curso;
     this.asignaturas=asignaturas;
 };
 
 Alumno.prototype =new Person();
+Alumno.prototype.constructor = Alumno // esto asugura que la funcion constructura apunte a la funcion constructura de alumno y la 
+//constructura de la que esta heredando
 
-console.log(Alumno.constructor)
 santiago = new Alumno(santiago, "universidad", "....")
 console.log(santiago)

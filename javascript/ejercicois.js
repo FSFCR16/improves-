@@ -748,27 +748,69 @@ ipsBetween("20.0.0.10", "20.0.1.0")
 
 
 
-function zero(fn) {return fn ? fn(0) : 0}
-function one(fn) {return fn ? fn(1) : 1}
-function two(fn) {return fn ? fn(2) : 2}
-function three(fn) {
+// function zero(fn) {return fn ? fn(0) : 0}
+// function one(fn) {return fn ? fn(1) : 1}
+// function two(fn) {return fn ? fn(2) : 2}
+// function three(fn) {
 
-    return fn ? fn(3) : 3
+//     return fn ? fn(3) : 3
+// }
+// function four(fn) {return fn ? fn(4) : 4}
+// function five(fn) {return fn ? fn(5) : 5}
+// function six(fn) {return fn ? fn(6) : 6}
+// function seven(fn) {return fn ? fn(7) : 7}
+// function eight(fn) { 
+//     return fn ? fn(8) : 8
+// }
+// function nine(fn) {return fn ? fn(9) : 9}
+
+// function plus(n) {return function(v) {return v + n}}
+// function minus(n) {return function(v) {return v - n}}
+// function times(n) {return function(v) {return v * n}}
+// function dividedBy(n) {
+//     console.log(n)
+//     return function(v) {return v / n}}
+
+
+// function generateHashtag(str) {
+//     let palabra = str.trim().split(" ");
+
+//     palabra = palabra.map((element) => {
+//         if (element && element[0] !== element[0].toUpperCase()) {
+//             return element.replace(element[0], element[0].toUpperCase());
+//         }
+//         return element;
+//     });
+
+//     return '#' + palabra.join('');
+// }
+
+function solution(list){
+    let secuencia = 1
+    let intervalos = ""
+    let listaFinal = []
+    for (let i = 0, j =1; j < list.length + 1; j++){
+        if ((list[i] + secuencia) === list[j]){
+            intervalos = list.slice(i, j+1)
+            secuencia++
+        }else if(intervalos.length === 0){
+            listaFinal.push(list[i])
+            i++
+        }else{
+            if(intervalos.length === 2){
+                let devolver = intervalos.join(",")
+                listaFinal.push(devolver)
+            }else{
+                let intervalo = `${intervalos[0]}-${intervalos[intervalos.length - 1]}`
+                listaFinal.push(intervalo)
+            }
+            intervalos = []
+            i = j
+            secuencia = 1
+        }
+    }
+
+   console.log(listaFinal.join(","))
 }
-function four(fn) {return fn ? fn(4) : 4}
-function five(fn) {return fn ? fn(5) : 5}
-function six(fn) {return fn ? fn(6) : 6}
-function seven(fn) {return fn ? fn(7) : 7}
-function eight(fn) { 
-    return fn ? fn(8) : 8
-}
-function nine(fn) {return fn ? fn(9) : 9}
 
-function plus(n) {return function(v) {return v + n}}
-function minus(n) {return function(v) {return v - n}}
-function times(n) {return function(v) {return v * n}}
-function dividedBy(n) {
-    console.log(n)
-    return function(v) {return v / n}}
-
-console.log(eight(dividedBy(three())))
+solution([-6, -3, -2, -1, 0, 1, 3, 4, 5, 7, 8, 9, 10, 11, 14, 15, 17, 18, 19, 20])
