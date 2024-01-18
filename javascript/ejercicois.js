@@ -785,22 +785,22 @@ ipsBetween("20.0.0.10", "20.0.1.0")
 //     return '#' + palabra.join('');
 // }
 
-function solution(list){
+function solution(list) {
     let secuencia = 1
     let intervalos = ""
     let listaFinal = []
-    for (let i = 0, j =1; j < list.length + 1; j++){
-        if ((list[i] + secuencia) === list[j]){
-            intervalos = list.slice(i, j+1)
+    for (let i = 0, j = 1; j < list.length + 1; j++) {
+        if ((list[i] + secuencia) === list[j]) {
+            intervalos = list.slice(i, j + 1)
             secuencia++
-        }else if(intervalos.length === 0){
+        } else if (intervalos.length === 0) {
             listaFinal.push(list[i])
             i++
-        }else{
-            if(intervalos.length === 2){
+        } else {
+            if (intervalos.length === 2) {
                 let devolver = intervalos.join(",")
                 listaFinal.push(devolver)
-            }else{
+            } else {
                 let intervalo = `${intervalos[0]}-${intervalos[intervalos.length - 1]}`
                 listaFinal.push(intervalo)
             }
@@ -810,7 +810,43 @@ function solution(list){
         }
     }
 
-   console.log(listaFinal.join(","))
 }
 
 solution([-6, -3, -2, -1, 0, 1, 3, 4, 5, 7, 8, 9, 10, 11, 14, 15, 17, 18, 19, 20])
+
+function solveExpression(exp) {
+    const operador = /(?<=[^" "])[-+*]/
+    let indice = exp.indexOf(exp.match(operador)[0], 1)
+    let operacion = exp.match(operador)[0]
+    let number = 0;
+    for (let i = 0; number < 10; i++) {
+
+        while (exp.includes(number.toString())) {
+            number++;
+        }
+
+        let expresionCompleta = exp.replace(/\?/g, number).split("=")
+        let primerO = expresionCompleta[0].slice(0, indice)
+        let segundoO = expresionCompleta[0].slice(indice + 1, expresionCompleta[0].length)
+        if (expresionCompleta[1] === "00"|| (expresionCompleta[1].length > 1 && expresionCompleta[1][0] === "0")) {
+            "invalido"
+        }else if(expresionCompleta[1][0] === "-" && expresionCompleta[1][1] === "0"){
+            "invalido"
+        }else if(primerO.length > 1 && primerO[0]==="0" || segundoO.length > 1 && segundoO[0]==="0" ){
+            "invalido"
+        }
+        else if (operacion === "*" && (parseInt(primerO) * parseInt(segundoO)) === parseInt(expresionCompleta[1])) {
+            return number
+        } else if (operacion === "+" && (parseInt(primerO) + parseInt(segundoO)) === parseInt(expresionCompleta[1])) {
+            return number
+        } else if (operacion === "-" && (parseInt(primerO) - parseInt(segundoO)) === parseInt(expresionCompleta[1])) {
+            return number
+        }
+        number++
+    }
+
+    return -1
+}
+
+
+solveExpression('1+1=?')
