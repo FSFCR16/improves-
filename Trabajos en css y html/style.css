@@ -1,0 +1,16 @@
+p{
+    display: flex;
+    font-size: 40px; 
+
+}
+p::after{
+    position: relative;
+    content: "";
+    width: 5rem;
+    height: 1rem;
+    background-color: black;
+    top: 50%;
+    left: 2%;
+    transform: translate(0.25rem, -50%);
+    clip-path: polygon(0 0, 50% 100%, 100% 0);
+}
