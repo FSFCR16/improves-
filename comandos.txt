@@ -1,0 +1,129 @@
+pwd - ver el directorio en el que estoy parado
+
+whoami - quien soy, o sea el nombre de la maquina
+
+help - encontrar ayuda sobre cualquier funcion
+
+clear - borrar la consola
+
+ls - listar los archivos o directorias de la carptea en la que te 
+encuentras parado
+
+cd - para cambiar de directorio, cd .. para devolverte a un nivel anterior, un solo punto te dice la carpeta actual 
+
+New-Item - <nombre archivo> sirve para crear un archivo
+
+echo - permite guardar contenido, la sintaxis seria texto > nombre del archivo
+
+cat - para ver la informacion de un archivo
+
+mkdir- para crear directorios
+
+rmdir - para borrar dictorios
+
+rm <nombre_archivo> - borrar un archivo
+
+rm -r <nombre_carpeta> - borra un directorio y todo su contenido, rm = remove -r = recurse
+
+rm -rf <nombre_carpeta> - hace los mismo que rm  -r solo que de forma forzada
+
+mv <nombre_archivo_o_carpeta/inicio> <nombre_carpeta/destino> sirve para mover un directorio o archivo a un lugar diferente, tambien sirve para cambiar los nombres de los archivos y formatos, con la misma idea de posicion de los argumentos
+
+cp - copiar archivos de una ruta a otra
+
+cp -r <nombre_carpeta> - para copiar carpetas de una lado a otro
+
+gci - para encontrar varios archivos puedes buscar un ejemplo de encontrar archivos que comiencen con h ---  gci h*
+
+gci ./ | Where-Object { $_.Name -match "v.+(.pdf)$" } una opcion
+otra opcion seria gci -r | where Name -match y la expresion regular este seria para encontrar archivos con expresiones regulares, tambien podemos buscar por tamaño del archvio gci -r | where length gt 3
+
+ps - lista todo los procesos y sirve por si quieres terminar algun proceso con Stop-Process
+
+------------------------------- LINUX ---------------------------------
+
+pwd - ver el directorio en el que estoy parado
+
+ls - listar los archivos o directorias de la carptea en la que te 
+encuentras parado
+
+ls -l - Listar archivos con permisos
+
+cd - para cambiar de directorio, cd .. para devolverte a un nivel anterior, un solo punto te dice la carpeta actual 
+
+mkdir- para crear directorios
+
+mv <nombre_archivo_o_carpeta/inicio> <nombre_carpeta/destino> sirve para mover un directorio o archivo a un lugar diferente, tambien sirve para cambiar los nombres de los archivos y formatos, con la misma idea de posicion de los argumentos
+
+rm <nombre_archivo> - borrar un archivo
+
+touch para crear archivos
+
+cat - para ver la informacion de un archivo
+
+clear - borrar la consola
+
+
+echo - permite guardar contenido, la sintaxis seria texto > nombre del archivo, tambien para imprimir algo en consola
+
+nano - tambien sirve para escribir en un archivo pero con interface diferente
+
+rmdir - para borrar dictorios
+
+find para buscar archivos ejemplo archivos que terminen en v find *v
+
+head - te muentra las primeras lineas de un archivo
+
+exit - sirve para salir
+
+------------------------------ GIT -----------------------------------
+
+git config --global --list - listar las credenciales
+
+git config --list
+
+
+git branch --show-current - muestra la rama actual
+
+-m en git -m hace referencia a un mensaje m de mensaje, le estamos diciendo que vamos a mandar un mensaje
+
+git branch -m <nombre> este comando sirve para cambiar el nombre de la rama en la que estamos ubicados
+
+git status - sirve para saber los cambios que se han hecho, por decirlo asi y como el nombre lo dice el estado
+
+git commit -m <mensaje> - sirve para guardar los cambios que se han hecho
+
+git log - sirve para saber los logs que se han hecho
+
+git --help - sirve para saber los comandos existentes
+
+git checkout nos sirve para devolvernos a un estado anterior de un archvo, tambien para cambiar de ramas y para revisar versiones anteriores
+si quieres devolverte a un estado anterior debes usar:
+git checkout <nombre del archivo> de esta forma te devulve al anterior estado de es archivo 
+si quieres cambiar de rama:
+git checkout <nombre_rama> de esta forma cambias de rama
+si quieres revisar una version anterior
+git checkot <hash de la version> de esta forma revisas una version
+
+git reset - nos devuelve al ultimo commit hecho
+
+git log --graph te da una descripcion mas detallada de cada commit
+
+git log --graph --pretty=oneline lo mismo que el anterior pero de una forma mas agradable
+
+git log --graph --decorate --all --oneline lo mismo pero aun mas agradable
+
+alias - sirve para simplificar un comando como shotcut, ejemplo para cambiar un alias con git:
+tenemos este comando git log --graph --decorate --all --oneline y le creamos un alias asi:
+git config --global alias.grafo "log --graph --decorate --all --oneline"
+ahora el comando es git grafo 
+
+.gitignore es un archivo que nos permite omitir archivos a la hora de hacer un commit
+
+selenio - web scrapping 
+
+git config --list se utiliza en Git para mostrar la configuración actual de Git en tu sistema. Al ejecutar este comando, obtendrás una lista de todas las configuraciones de Git que se han establecido en tu sistema, incluyendo la configuración a nivel de usuario y la configuración a nivel de repositorio.
+
+git diff sirve para ver los cambios dentro de un archivo
+
+git remote add origin https://github.com/usuario/repositorio.git este comando lo que hace es crear un repositorio remoto en giy vincularlo a un repositorio remoto en github mediante la url del repositorio
