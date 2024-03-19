@@ -483,3 +483,77 @@ console.log(p.saludar()); // Hola soy Santiago Fajardo
 // pues no lo tenemos oero podemos añadirselo
 
 console.log(stringObject.constructor);
+
+// Lo mismo aplicaria para un objeto ya propio del lenguaje
+// EJEMPLO
+
+const stringOb = new Object("Hola mundo");
+stringOb.test = function () {
+  return this + " test";
+};
+console.log(stringOb.test());
+
+const us = {
+  name: "",
+  apellido: "",
+  edad: 23,
+};
+
+function listAllProperties(o) {
+  var objectToInspect;
+  var result = [];
+
+  for (
+    objectToInspect = o;
+    objectToInspect !== null;
+    objectToInspect = Object.getPrototypeOf(objectToInspect)
+  ) {
+    console.log(Object.getOwnPropertyNames(objectToInspect));
+    result = Object.getOwnPropertyNames(objectToInspect);
+  }
+
+  console.log(result);
+}
+listAllProperties(user);
+
+// Object.getPrototypeOf(objectToInspect), esta linea de codigo lo que hace es que devuelve el prototipo de objeto actual,
+// En otras palabras menos complicada devulve el objeto del cual hereda sus porpiedades o metodos, si no existe un objeto del cual herede
+// el resultado sera null
+
+function User() {
+  this.name = "";
+  this.lastname = "";
+}
+
+const usuario = new User();
+console.log(usuario);
+
+const mankind = {
+  Person: function () {
+    "use strict";
+    this.name = "";
+    this.lastname = "";
+  },
+};
+
+const personas = new mankind.Person();
+console.log(personas);
+
+// Explicacion
+// Dado lo que he hablado aqui, en este objeto pasa algo curioso y explcia varias cosas
+// si nosotros usamos la palabra revervada new y ponemos mankind.Person() lo que estamos haciendo es
+// acceder a la propiedad Person de mankind la cual es un contructor y por medio del constructor creamos un objeto
+// si ejecutamos eso o le damos console.log el arrojara el objeto persona y el this hara ferencia al constructor creado o sea al objeto creado
+// pero que pasa si no usamos la palabra reservada new
+
+const personasDos = mankind.Person();
+
+// pues que simplemente es como si estuvieramos llamando a una funcion llamada Person y aqui pasa lo siguiente,
+// el primero es que el comportamiento this dentro de una funcion regular depende de a que objeto estan siendo llamada la funcion
+// o sea se establace a la hora de su definicion y debido a que la funcion esta siendo llamda atraves del objeto mankind
+// lo que hace es que le esatamos diciendo que this hace referencia mankind entonces es como si le dijeramos mandkind.name = ""
+// lo que generara la creacion de esas propiedades, es por eso que si haces un log de personasDos te arroja undefined, porque es una funcion
+// y no esta devolviendo nada
+// si hacemso un log de mankind devulve lo siguiente
+
+console.log(mankind);
