@@ -828,14 +828,13 @@ function solveExpression(exp) {
         let expresionCompleta = exp.replace(/\?/g, number).split("=")
         let primerO = expresionCompleta[0].slice(0, indice)
         let segundoO = expresionCompleta[0].slice(indice + 1, expresionCompleta[0].length)
-        if (expresionCompleta[1] === "00"|| (expresionCompleta[1].length > 1 && expresionCompleta[1][0] === "0")) {
+        if (expresionCompleta[1] === "00" || (expresionCompleta[1].length > 1 && expresionCompleta[1][0] === "0")) {
             "invalido"
-        }else if(expresionCompleta[1][0] === "-" && expresionCompleta[1][1] === "0"){
+        } else if (expresionCompleta[1][0] === "-" && expresionCompleta[1][1] === "0") {
             "invalido"
-        }else if(primerO.length > 1 && primerO[0]==="0" || segundoO.length > 1 && segundoO[0]==="0" ){
+        } else if (primerO.length > 1 && primerO[0] === "0" || segundoO.length > 1 && segundoO[0] === "0") {
             "invalido"
-        }
-        else if (operacion === "*" && (parseInt(primerO) * parseInt(segundoO)) === parseInt(expresionCompleta[1])) {
+        } else if (operacion === "*" && (parseInt(primerO) * parseInt(segundoO)) === parseInt(expresionCompleta[1])) {
             return number
         } else if (operacion === "+" && (parseInt(primerO) + parseInt(segundoO)) === parseInt(expresionCompleta[1])) {
             return number
@@ -849,4 +848,151 @@ function solveExpression(exp) {
 }
 
 
-solveExpression('1+1=?')
+
+function solutionDos(text, markers) {
+    for (let i = 0; i < markers.length; i++) {
+        let regex = new RegExp(`${markers[i]}\\s?(\\w+|\\n?)`, "g");
+        text = text.replace(regex, "");
+    }
+
+    let finalCadena = text.replace(/\s+$/, "");
+
+    console.log(finalCadena)
+}
+
+
+/*
+ * Reto #1
+ * ¿ES UN ANAGRAMA?
+ * Fecha publicación enunciado: 03/01/22
+ * Fecha publicación resolución: 10/01/22
+ * Dificultad: MEDIA
+ *
+ * Enunciado: Escribe una función que reciba dos palabras (String) y retorne verdadero o falso (Boolean) según sean o no anagramas.
+ * Un Anagrama consiste en formar una palabra reordenando TODAS las letras de otra palabra inicial.
+ * NO hace falta comprobar que ambas palabras existan.
+ * Dos palabras exactamente iguales no son anagrama.
+ *
+ * Información adicional:
+ * - Usa el canal de nuestro discord (https://mouredev.com/discord) "🔁reto-semanal" para preguntas, dudas o prestar ayuda a la acomunidad.
+ * - Puedes hacer un Fork del repo y una Pull Request al repo original para que veamos tu solución aportada.
+ * - Revisaré el ejercicio en directo desde Twitch el lunes siguiente al de su publicación.
+ * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
+ */
+
+function isAnagram(wordOne, wordTwo) {
+    if (wordOne.toLowerCase() === wordTwo.toLowerCase()) {
+        return false;
+    }
+
+    const sortedWordOne = wordOne.toLowerCase().split('').sort().join('');
+    const sortedWordTwo = wordTwo.toLowerCase().split('').sort().join('');
+
+    console.log(sortedWordOne, sortedWordTwo)
+
+    return sortedWordOne === sortedWordTwo;
+}
+
+console.log(isAnagram("aguila", "laguia"));
+
+/*
+ * Reto #2
+ * LA SUCESIÓN DE FIBONACCI
+ * Fecha publicación enunciado: 10/01/22
+ * Fecha publicación resolución: 17/01/22
+ * Dificultad: DIFÍCIL
+ *
+ * Enunciado: Escribe un programa que imprima los 50 primeros números de la sucesión de Fibonacci empezando en 0.
+ * La serie Fibonacci se compone por una sucesión de números en la que el siguiente siempre es la suma de los dos anteriores.
+ * 0, 1, 1, 2, 3, 5, 8, 13...
+ *
+ * Información adicional:
+ * - Usa el canal de nuestro discord (https://mouredev.com/discord) "🔁reto-semanal" para preguntas, dudas o prestar ayuda a la acomunidad.
+ * - Puedes hacer un Fork del repo y una Pull Request al repo original para que veamos tu solución aportada.
+ * - Revisaré el ejercicio en directo desde Twitch el lunes siguiente al de su publicación.
+ * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
+ *
+ */
+function fibonacci() {
+    // let listFibo = [0 , 1]
+    // for(let i = 0, j = 1; listFibo.length < 50; i++, j++){
+    //     let nuevoNumero = listFibo[i] + listFibo[j]
+    //     listFibo.push(nuevoNumero)
+    // }
+
+    // console.log(listFibo.join(", "))
+    let n0 = 0;
+    let n1 = 1;
+
+    for (let i = 1; i <= 50; i++) {
+        console.log(n0);
+
+        const fib = n0 + n1;
+        n0 = n1;
+        n1 = fib;
+    }
+}
+
+
+
+/*
+ * Reto #3
+ * ¿ES UN NÚMERO PRIMO?
+ * Fecha publicación enunciado: 17/01/22
+ * Fecha publicación resolución: 24/01/22
+ * Dificultad: MEDIA
+ *
+ * Enunciado: Escribe un programa que se encargue de comprobar si un número es o no primo.
+ * Hecho esto, imprime los números primos entre 1 y 100.
+ *
+ * Información adicional:
+ * - Usa el canal de nuestro discord (https://mouredev.com/discord) "🔁reto-semanal" para preguntas, dudas o prestar ayuda a la acomunidad.
+ * - Puedes hacer un Fork del repo y una Pull Request al repo original para que veamos tu solución aportada.
+ * - Revisaré el ejercicio en directo desde Twitch el lunes siguiente al de su publicación.
+ * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
+ *
+ */
+
+
+
+function esPrimo() {
+    for (let i = 1; i <= 100; i++) {
+        let noEsPrimo= false
+        for (let j = 2; j < i; j++) {
+            if (i % j === 0) {
+                console.log(i, "no es primo")
+                j=i
+                noEsPrimo = true
+            }
+        }
+        if(!noEsPrimo){
+            console.log(i, "es primo")
+        }
+
+    }
+}
+
+
+
+esPrimo()
+
+
+/*
+ * Reto #4
+ * ÁREA DE UN POLÍGONO
+ * Fecha publicación enunciado: 24/01/22
+ * Fecha publicación resolución: 31/01/22
+ * Dificultad: FÁCIL
+ *
+ * Enunciado: Crea UNA ÚNICA FUNCIÓN (importante que sólo sea una) que sea capaz de calcular y retornar el área de un polígono.
+ * - La función recibirá por parámetro sólo UN polígono a la vez.
+ * - Los polígonos soportados serán Triángulo, Cuadrado y Rectángulo.
+ * - Imprime el cálculo del área de un polígono de cada tipo.
+ *
+ * Información adicional:
+ * - Usa el canal de nuestro discord (https://mouredev.com/discord) "🔁reto-semanal" para preguntas, dudas o prestar ayuda a la acomunidad.
+ * - Puedes hacer un Fork del repo y una Pull Request al repo original para que veamos tu solución aportada.
+ * - Revisaré el ejercicio en directo desde Twitch el lunes siguiente al de su publicación.
+ * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
+ *
+ */
