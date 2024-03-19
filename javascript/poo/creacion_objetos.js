@@ -536,7 +536,7 @@ const mankind = {
   },
 };
 
-const personas = new mankind.Person();
+const personas = new mankind.Person(); // Person { name: '', lastname: '' }
 console.log(personas);
 
 // Explicacion
@@ -556,4 +556,85 @@ const personasDos = mankind.Person();
 // y no esta devolviendo nada
 // si hacemso un log de mankind devulve lo siguiente
 
-console.log(mankind);
+console.log(mankind); // { Person: [Function: Person], name: '', lastname: '' }
+
+//------------------------------------PROTOTYPE---------------------------------------------
+// Ahora entendamos la propiedad prototype es una porpiedad que nos permite crear a un objeto metodos u propiedades
+// pero que pasa? te preguntaras pero yo puedo hacer lo siguiente
+
+// DECLARO UN CONSTRUCTOR
+
+function PersonPrototype(name, lastname) {
+  this.name = name;
+  this.lastname = lastname;
+  this.displayName = function () {
+    return `${this.name} ${this.lastname}`;
+  };
+}
+
+// CREO UN OBJETO A PARTIR DEL CONSTRUCTOR
+const pp = new PersonPrototype("Santiago", "Fajardo");
+console.log(pp); // como se puede ver se crea un objeto
+
+// ahora como decia, tu puedes decir pero por que no creo una propiedad u metodo de la siguiente manera
+// pp.edad = 30;
+// pp.caminar = function () {
+//   return "estoy camiando";
+// };
+
+// console.log(pp);
+//LOG
+
+// PersonPrototype {
+//   name: 'Santiago',
+//   lastname: 'Fajardo',
+//   displayName: [Function (anonymous)],
+//   edad: 30,
+//   caminar: [Function (anonymous)]
+// }
+
+// listo como puedes ver se agrego una propiedad y un metodo al objeto pero que pasa si
+// creamos otro objeto
+const ppDos = new PersonPrototype("Juan", "Gomez");
+console.log(ppDos);
+// LOG
+// PersonPrototype {
+//   name: 'Juan',
+//   lastname: 'Gomez',
+//   displayName: [Function (anonymous)]
+// }
+
+// como este objeto ya no tiene las porpiedades del primer objeto pero el primer objeto sigue manteniendo la propiedad y metodo que le añadimos
+// como te puedes dar cuenta esto pasa debido a que esas propiedades y metodos se hicieron o se crearon sobre ese objeto en especifico
+// entonces eso soluciona el prototype, el prototype permite que puedas añadir un metodo a un constructor o propiedad y que esas propiedades
+// o metodos sean heredados a los objetos creados apartir de ese constructor
+
+// EJEMPLO
+
+PersonPrototype.prototype.caminar = function () {
+  return "Estoy caminado";
+};
+
+// ahora si hacemos un log de los objetos creados
+console.log(pp);
+// LOG
+// PersonPrototype {
+//   name: 'Santiago',
+//   lastname: 'Fajardo',
+//   displayName: [Function (anonymous)]
+// }
+console.log(ppDos);
+// LOG
+// PersonPrototype {
+//   name: 'Juan',
+//   lastname: 'Gomez',
+//   displayName: [Function (anonymous)]
+// }
+
+// Como puedes ver ese de todas formas no aparece el metodo esto es debido a que el metodo no se lo estamos añadiendo a ellos
+// los objetos ya se crearon con esos metodos y propiedades, se lo estamos añadiendo es a la raiz al prototipo de esos objetos
+// entonces si hacemos un log de PersonPrototype, veremos que ahi si se encuentra el metodo
+
+const ppTres = new PersonPrototype("julian", "rambo");
+console.log(Object.getOwnPropertyNames(PersonPrototype.prototype));
+// console.log(Object.getPrototypeOf(ppTres));
