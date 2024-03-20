@@ -636,5 +636,126 @@ console.log(ppDos);
 // entonces si hacemos un log de PersonPrototype, veremos que ahi si se encuentra el metodo
 
 const ppTres = new PersonPrototype("julian", "rambo");
-console.log(Object.getOwnPropertyNames(PersonPrototype.prototype));
+console.log(Object.getOwnPropertyNames(PersonPrototype.prototype));  // esta propiedad.getOwnPropertyNames devuelve todas las propiedades y metodos no heredados , PersonPrototype.prototype y esta parte hace que traiga las propiedades
+// y metodos del prototipo del constructor
 // console.log(Object.getPrototypeOf(ppTres));
+
+// Como sucede por dentro pues si te diste cuenta las instancias del constructor no tienen el metodo, lo que sucede es que al ser instanciado del constructor el sigue teniendo
+// acceso a su prototipo y cuando yo metodo en el portotipo del constructor lo que hace el es que si no encuentra el metodo o propiedad en el objeto instanciado ira a buscarlo 
+// en el protipo de su constructor
+
+// Bajo esta misma idea tambien podemos modifcar constructores ya establecidos en el lenguaje
+
+// EJEMPLO
+
+// const stringDos = new String("Hola mundo")
+
+// stringDos.prototype.wdo = "Este string lo que hace es saludar."
+
+// console.log(string.wdo)
+
+// Cometi este error y lo voy a dejar para aprender, lo que pasa es que intente añadir un prototipo a una instancia de un constructor
+// pero esta mal porque no podemos añadirle una propiedad o metodo a una instancia tenemos que ñadirse al contructor como tal
+
+const stringDos = new String("Hola mundo")
+
+String.prototype.wdo = "Este string lo que hace es saludar."
+
+console.log(stringDos.wdo) // Listo ahora como podemos ver este es el log - Este string lo que hace es saludar.
+
+// pero que pasa ahora como fue una propiedad fue puesta al prototipo del constructor todos los objetos que sean instanciados apartir de ese constructor tendran la propiedad wdo
+
+const stringTres = new String("como vas")
+console.log(stringTres.wdo) // segundo log - Este string lo que hace es saludar.
+
+// si solo quisieramos que la proiedad sea a una instancia en especifica no usamos en el prototype
+
+stringDos.acction =  "Este string lo que hace es saludar."
+console.log(stringDos.acction) // log - Este string lo que hace es saludar.
+console.log(stringTres.acction)  // undefined porque este objeto no tiene la propiedad
+
+
+// ------------------------------------------PALABRA CLASS------------------------------------------------------------
+
+class Usuarios{
+  constructor(name, lastname){
+    this.name = name,
+    this.lastname = lastname
+  }
+
+  greet(){
+    return `Hola, mi nombre es ${this.name} ${this.lastname}`
+  }
+}
+
+const fsfcr =  new Usuarios("joe", "juan")
+const fajar = new Usuarios("kevin", "Diaz")
+console.log(fsfcr)
+console.log(fajar)
+
+
+// Cuando usas la palabra class de igual que la funcion construtora, el constructor de la clase
+// es el encargado de crear el objeto y sus porpiedades tambien podria crear los metodos pero la clase es la plantilla
+// que le brinda los metodos al objeto
+// ahora puedes declarar los metodos en el constructor o en el cuerpo de la clase
+// pero poner los metodos en el constructor puede empeorar la mantenibilidad, el rendimiento y da una semnatica menos clara
+
+
+// EJEMPLO CON LOS METODOS EN EL COSNTRUCTOR
+
+class UsuariosConstructor{
+  constructor(name, lastname){
+    this.name = name,
+    this.lastname = lastname
+    this.great= function(){
+      return `Hola, mi nombre es ${this.name} ${this.lastname}`
+    }
+  }
+
+}
+
+const usuarioConstructor = new UsuariosConstructor("estefany","palacio")
+console.log(usuarioConstructor.great(), "linea 718") // log - Hola, mi nombre es estefany palacio linea 718
+console.log(usuarioConstructor)
+// LOG 
+// UsuariosConstructor {
+//   name: 'estefany',
+//   lastname: 'palacio',
+//   great: [Function (anonymous)]
+// }
+
+console.log(fsfcr)
+// LOG
+// Usuarios { name: 'joe', lastname: 'juan' }
+
+
+// Es por esto mismo que cuando le hacemos log a un objeto instanciado por 
+// la clase que tiene el metood en el cuerpo de la clase, si le hacemos un log a eso
+// veremos que no tiene el metodo y es debido a eso mismo el constructor no tiene el metodo, el metodo lo tiene la plantilla
+// en este caso la clase pero en cambio si le hacemos un log al que si tiene el metodo en el constructor
+// veremos que ese si tiene esa instancia si se impreme con el metodo
+
+
+// Caso curioso pero logico si entendemos todo lo que se habaldo hasta el 
+
+class UsuariosEjemplo{
+  constructor(name, lastname){
+    this.name = name,
+    this.lastname = lastname
+    return {
+      x: "somenthig"
+    } // Que esta pasando aca? o que pasaria aca, pues como hemos comentado
+    // el constructor es el que crea el objeto medianteb las propiedades que le especificamos
+    // pero que pasa si le decimos al constructor que devuleva un objeto pues que eso sera lo que va adevolver el objeto
+    // entonces el ya no creara un objeto con this.name, ni this.lastname porque le esatmos diciendo que devulva x:"something"
+    }
+
+  greet(){
+    return `Hola, mi nombre es ${this.name} ${this.lastname}`
+  }
+}
+
+// Veamos
+
+const userEjemplo = new UsuariosEjemplo()
+console.log(userEjemplo)
