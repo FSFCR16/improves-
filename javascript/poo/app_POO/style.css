@@ -1,0 +1,60 @@
+
+.nav{
+  display: flex;
+  height: 4vh;
+  justify-content: space-between;
+  align-items:center ;
+  padding: 10px 20px;
+  border-bottom: 1px solid black;
+  
+}
+
+.name_app_a{
+  text-decoration: none;
+  color: black;
+  font-size: 20px;
+}
+
+.container{
+  display: grid;
+  grid-template-columns: 50% 50%;
+  height: 74vh;
+  padding: 80px;
+}
+
+.container-card{
+  height: 100%;
+}
+
+.card{
+  display: grid;
+  grid-template-rows: 10% 80%;
+  height: 100%;
+  row-gap: 10px;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+}
+
+.header-card{
+  display: flex;
+  align-items: center;
+  background-color: rgb(245, 245, 245);
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  padding: 10px;
+  border-bottom: 1px solid rgb(212, 212, 212);
+}
+
+.body-card{
+  padding: 15px;
+}
+
+.input{
+  outline: none;
+  border: 0.6px solid rgb(209, 209, 209);
+  border-radius: 5px; 
+  height:2.3rem ;
+  padding-left:10px ;
+}
+
+.input:focus{
+  border:1px solid rgb(144, 238, 144) ;
+}

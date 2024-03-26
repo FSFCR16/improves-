@@ -357,3 +357,29 @@ function suma(x = 0, y = 0, z = 0) {
 }
 
 console.log(suma(23, 45));
+
+// Esto seria tambien un ejemplo de sobrecarga debido a que no importa cuantos parametros le pasemos el ejecutara la funcion
+
+// Polimorfismo paramétrico: Se refiere a la capacidad de una función o clase para trabajar con argumentos de varios tipos de datos sin
+// tener que especificar el tipo exacto. Esto se logra mediante el uso de parámetros genéricos o plantillas.
+
+// Lo que pasa es que js es dinamico entonces no es un problema para el lenguaje o no es tomado este tipo de polimorfismo
+
+// Exactamente, eso es correcto. El polimorfismo de
+// subtipos nos permite tratar un objeto de una subclase como
+// si fuera un objeto de su superclase. Esto significa que podemos utilizar
+// un objeto de una subclase en cualquier lugar donde se espera un objeto de su
+// superclase, y el comportamiento que se ejecuta será el correspondiente al tipo
+// real del objeto en tiempo de ejecución.
+
+// Cuando llamamos a un método en un objeto de una clase base (superclase)
+// que ha sido sobrescrito en una subclase, el método de la subclase se ejecuta
+// en lugar del método de la superclase. Esto permite que el comportamiento específico
+// de la subclase se manifieste cuando se utiliza un objeto de esa subclase, incluso si
+// se pasa como un objeto de la superclase.
+
+// El polimorfismo de subtipos es una característica clave de la programación orientada
+// a objetos que nos permite escribir código más genérico, reutilizable y fácil de mantener,
+// ya que podemos escribir código que trabaje con objetos de una clase base y que automáticamente
+// se adapte al comportamiento específico de las subclases cuando se utilizan. Esto facilita
+// la extensión y la modificación del código a medida que se desarrolla y se evoluciona el sistema.
