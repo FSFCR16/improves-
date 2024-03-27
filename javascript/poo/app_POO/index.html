@@ -7,13 +7,11 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
   <nav class="nav">
     <a class="name_app_a" href="/">
       Product App
     </a>
   </nav>
-
   <main class="container">
     <section class="app">
       <article class="container-card">
@@ -23,17 +21,27 @@
           </article>
           <form id="product-form" class="body-card">
             <section class="form-group">
-              <input type="text" id="name" class="input" placeholder="Product name">
+              <input type="text" id="name" class="input" placeholder="Product Name">
             </section>
+            <section class="form-group">
+              <input type="number" id="price" step="0.01" class="input" placeholder="Product Price">
+            </section>
+            <section class="form-group">
+              <input type="number" id="year" value="2018" min="1900" max="2025" class="input" placeholder="Year Product">
+            </section>
+            
+            <button type="submit" class="btn-save">Save</button>
           </form>
         </section>
       </article>
-      <article>
-        
-      </article>
     </section>
+    <article class="container-product">
+      <ul id="product-list">
+
+      </ul>
+    </article>
 
   </main>
-  
+  <script src="app.js"></script>
 </body>
 </html>

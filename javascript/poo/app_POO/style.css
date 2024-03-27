@@ -17,18 +17,19 @@
 
 .container{
   display: grid;
-  grid-template-columns: 50% 50%;
+  grid-template-columns: 35% 65%;
+  column-gap: 20px;
   height: 74vh;
   padding: 80px;
 }
 
 .container-card{
-  height: 100%;
+  height: auto;
 }
 
 .card{
   display: grid;
-  grid-template-rows: 10% 80%;
+  grid-template-rows: 20% 80%;
   height: 100%;
   row-gap: 10px;
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
@@ -44,7 +45,10 @@
 }
 
 .body-card{
+  display: flex;
+  flex-direction: column;
   padding: 15px;
+  row-gap: 15px;
 }
 
 .input{
@@ -52,9 +56,42 @@
   border: 0.6px solid rgb(209, 209, 209);
   border-radius: 5px; 
   height:2.3rem ;
-  padding-left:10px ;
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box; /* hace que el tamaño del elemento sea la suma de los border y del padding, cosa contraria de lo que seria sin eso,
+  pues sin eso seria content-box , que lo que hace es que es el tamaño del elemento mas el padding mas border haceindo que sea mas ancho*/
 }
-
 .input:focus{
   border:1px solid rgb(144, 238, 144) ;
 }
+
+.btn-save{
+  border-radius: 13px;
+  height: 2.2rem;
+  background-color: blueviolet;
+  outline: none;
+  border: none;
+  color: white;
+}
+.container-product{
+  padding: 10px;
+}
+
+#product-list{
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+  height: auto;
+  padding: 0;
+}
+.card-product{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  list-style: none;
+  padding: 0;
+  height: 3rem;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+}
+
