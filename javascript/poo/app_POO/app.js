@@ -30,7 +30,7 @@ class UI {
   showMessage() {}
 }
 
-// Creacion de objetos
+// Creacion de objetos singleton
 const ui = new UI();
 
 // DOM EVENTS
